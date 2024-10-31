@@ -1,0 +1,165 @@
+/*-------------------------- style buttons-------------- */
+.top-lev{
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    margin-left: 820px;
+    
+}
+
+.top-lev a button{
+    width: 100px;
+    border-radius: 10px;
+    text-align: center;
+}
+#btnLogin{
+    color: #ceb0ef;
+    background-color: #7708eed1;
+    
+    margin-left: 300px;
+    margin-right: 15px;
+}
+ #btnSignUp{
+    color: #BF8CF5;
+    background-color: #2b0751;
+   
+    margin-right: 10px;
+}
+#btnLogin:hover{
+    color: #7E18EA;
+    background-color: rgba(145, 79, 207, 0.362);
+}
+#btnSignUp:hover{
+    background-color: #BF8CF5;
+    color: #2b0751;
+}
+
+/* ----------cards------------- */
+
+.card-row{
+    margin-top: 100px;
+    width: 900px;
+    
+    margin-left: 300px;
+    display: flex;
+    flex-direction: row;
+}
+.completedRepairsCard,.ongoingRepairsCard{
+    width: 300px;
+    height: 200px;
+    background: #5f4364;
+    
+}
+.completedRepairsCard{
+    margin-left: 30px;
+}
+.ongoingRepairsCard{
+    margin-left: 80px;
+}
+
+#fCount,#oCount{
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 700;
+    margin-left: 140px;
+    margin-top: 50px;
+}
+#fCount,#oCount{
+    color: #ba84f4;
+}
+@media (max-width:420px) {
+    .top-lev{
+        
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    }
+    .top-lev button{
+        width: 80px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 10px;
+    }
+    #btnLogin{
+        
+        margin-left: 0px;
+        margin-right: 15px;
+    }
+    #btnSignUp{
+        
+        margin-right: 10px;
+
+    }
+}
+
+
+
+@media (max-width:768px) {
+    .top-lev{
+        
+        display: flex;
+        flex-direction: row;
+        margin-left: 810px;
+        }
+        .top-lev button{
+            width: 70px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+        #btnLogin{
+            
+            margin-left: 0px;
+            margin-right: 15px;
+        }
+        #btnSignUp{
+            
+            margin-right: 10px;
+    
+        }
+}
+
+
+@media (min-width:1200px) {
+    .top-lev{
+        margin-top: -350px;
+        display: flex;
+        flex-direction: row;
+        margin-left: 910px;
+        }
+        .top-lev button{
+            width: 80px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+        }
+        #btnLogin{
+            
+            margin-left: 0px;
+            margin-right: 15px;
+        }
+        #btnSignUp{
+            
+            margin-right: 10px;
+    
+        }
+        .card-row{
+            margin-top: 100px;
+            width: 900px;
+            
+            margin-left: 200px;
+            display: flex;
+            flex-direction: row;
+        }
+        .card-row h5{
+            font-size: 24px;
+            margin: 5px 14px;
+        }
+        #fCount,#oCount{
+            font-size: 35px;
+            font-style: italic;
+            font-weight: 700;
+            margin-left: 140px;
+            margin-top: 50px;
+        }
+}

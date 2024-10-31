@@ -1,0 +1,16 @@
+*{
+    background-color: #D8BAF9;
+}
+
+.appContainer{
+    display: flex;
+    grid-template-columns: repeat(2,1fr);
+}
+
+header{
+    width: 20vw;
+}
+
+#mainRow{
+    width: 80vw;
+}

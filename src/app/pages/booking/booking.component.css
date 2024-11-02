@@ -7,3 +7,140 @@
     margin-left: 10px;
     background-color: #da4c4c;
 }
+/* --------------accounts----------- */
+.topLevel{
+    margin-top: -15px;
+    margin-bottom: 2px;
+    margin-left: 65vw;
+    width: 200px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+   
+}
+.userIcon,.carIcon{
+    
+    width: 55px;
+    height: 30px;
+    background-color: #160818;
+    border-radius: 10px;
+}
+.account{
+    margin-left: 2px; 
+    width:50px;
+    
+}
+.userIcon{
+    margin-left: -40px;
+}
+
+.userIcon:hover,.carIcon:hover{
+    color: #160818;
+    background-color: #9d24ad;
+}
+/* ---------------Booking----------------- */
+#bookingDate{
+    width: 600px;
+    background-color: rgba(137, 43, 226, 0.148);
+}
+
+.fRow{
+    
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.btnTimeSlot{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left:  45px;
+}
+
+.bookingDetails{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.timeSlots{
+    width: 850px;
+    display: grid;
+    grid-template-columns: repeat(1,8fr);
+}
+/* ------------------Boking form--------------- */
+.bookingForm{
+    margin-top: 30px;
+    margin-left: -300px;
+    width: 400px;
+    height: 440px;
+    background-color: aliceblue;
+}
+.searchRow{
+    
+    margin-top: 20px;
+    margin-left: 40px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.insideLeyer{
+    padding: 10px;
+    margin: 15px 25px;
+    width: 350px;
+    height: 340px;
+    background-color: #87728B;
+}
+#searchVId{
+    /* border: none; */
+    border-radius: 8px;
+    width: 200px;
+}
+
+#btnSearch{
+    width: 50px;
+}
+.insideRows{
+    margin: 20px 2px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+#bookedDate,#bookedTime,#bookedDesc{
+    
+    height: 30px;
+    width: 180px;
+}
+
+#serviceItem{
+    font-size: 12px;
+}
+
+
+.dropdown-item{
+    color: #160818;
+}
+.dropdown-item:hover{
+    color: #8434db;
+    background-color: #D8BAF9;
+}
+
+.dropdown-item:active{
+    color: #D8BAF9;
+    background-color: #8434db;
+}
+
+#btnConfirm{
+    border: none;
+    margin-left: 140px;
+    margin-top: 20px;
+    color: #160818;
+    background-color: #D8BAF9;
+    justify-content: center;
+    width: 80px;
+    height: 35px;
+    box-shadow: 1px 2px 1px #8434db;
+}
+
+#btnConfirm:hover{
+    background-color: #160818;
+    color: #D8BAF9;
+    font-weight: bold;
+    box-shadow: 2px 6px 4px  #D8BAF9;
+}

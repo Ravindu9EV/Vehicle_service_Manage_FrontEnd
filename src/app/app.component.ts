@@ -6,6 +6,8 @@ import { BookingComponent } from './pages/booking/booking.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
 
+
+
 @Component({
   selector: 'app-root',
   standalone: true,

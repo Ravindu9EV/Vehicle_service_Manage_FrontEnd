@@ -1,0 +1,52 @@
+<div class="userRegContainer">
+  <h1>User Registration Form</h1>
+
+  <div class="registrationForm form-control">
+    <div class="userForm">
+      <h4>User Details</h4>
+      <div class="col-auto detailRow">
+        <label for="userName" class="form-label uLabel">Name</label>
+        <input required type="text" id="userName" class="form-control" />
+      </div>
+      <div class="col-auto detailRow">
+        <label for="userEmail" class="form-label uLabel">Email</label>
+        <input required type="email" id="userEmail" class="form-control" />
+      </div>
+      <div class="col-auto detailRow">
+        <label for="userContact" class="form-label uLabel">Contact</label>
+        <input type="text" id="userContact" class="form-control" />
+      </div>
+      <div class="col-auto detailRow">
+        <label for="userPassword" class="form-label uLabel">Password</label>
+        <input
+          type="password"
+          id="userPassword"
+          required
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="vr"></div>
+    <div class="vehicleForm">
+      <h4>Vehicle Details</h4>
+      <div class="col-auto detailRow">
+        <label for="vehicleModel" class="form-label vLabel">Model</label>
+        <input required type="text" class="form-control" id="vehicleModel" />
+      </div>
+      <div class="col-auto detailRow">
+        <label for="licensePlate" class="form-label vLabel"
+          >License Plate</label
+        >
+        <input required type="text" class="form-control" id="licensePlate" />
+      </div>
+      <div class="col-auto detailRow">
+        <label for="vehicleMadeYear" class="form-label vLabel">Made Year</label>
+        <input required type="text" class="form-control" id="vehicleMadeYear" />
+      </div>
+    </div>
+
+    <button id="btnRegister" class="btn btn-light" type="submit">
+      Register
+    </button>
+  </div>
+</div>

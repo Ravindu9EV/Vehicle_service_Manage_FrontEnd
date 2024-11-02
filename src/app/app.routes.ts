@@ -3,6 +3,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
+import { VehicleRegistrationComponent } from './pages/vehicle-registration/vehicle-registration.component';
+import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
 
 export const routes: Routes = [
 
@@ -18,5 +20,11 @@ export const routes: Routes = [
     },{
         path:"vehicle",
         component:VehicleComponent
+    },{
+        path:"vehicle-registration",
+        component: VehicleRegistrationComponent
+    },{
+        path:"user-registration",
+        component: UserRegistrationComponent
     }
 ];

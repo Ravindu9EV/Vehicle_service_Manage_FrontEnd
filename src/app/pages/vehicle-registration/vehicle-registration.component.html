@@ -1,1 +1,59 @@
-<p>vehicle-registration works!</p>
+<div class="vehicleFormContainer">
+  <h4>Add New Vehicle</h4>
+  <!-- <div class="d-flex searchBar  " role="search">
+    <input
+    class="form-control me-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <button class="btn btn-outline-success w-25" type="submit"><i class="bi bi-search"></i></button>
+  
+  </div> -->
+  <div class="vehicleForm">
+    <div class="col-auto detailRow">
+      <label for="userId" class="form-label vLabel">User Id</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        [(ngModel)]="vehicle.userId"
+        id="userId"
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="vehicleModel" class="form-label vLabel">Model</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        [(ngModel)]="vehicle.model"
+        id="vehicleModel"
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="licensePlate" class="form-label vLabel">License Plate</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        [(ngModel)]="vehicle.licensePlate"
+        id="licensePlate"
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="vehicleMadeYear" class="form-label vLabel">Made Year</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        [(ngModel)]="vehicle.madeYear"
+        id="vehicleMadeYear"
+      />
+    </div>
+
+    <button class="btn btn-light" id="btnRegister" (click)="addVehicle()">
+      Register
+    </button>
+  </div>
+</div>

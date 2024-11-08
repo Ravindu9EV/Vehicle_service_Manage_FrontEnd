@@ -49,11 +49,7 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.btnTimeSlot{
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-left:  45px;
-}
+
 
 .bookingDetails{
     display: grid;
@@ -61,14 +57,20 @@
 }
 
 .timeSlots{
-    width: 850px;
+    width: 200px;
     display: grid;
     grid-template-columns: repeat(1,8fr);
+}
+.btnTimeSlot{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left:  45px;
+    width: 200px;
 }
 /* ------------------Boking form--------------- */
 .bookingForm{
     margin-top: 30px;
-    margin-left: -300px;
+    /* margin-left: -300px; */
     width: 400px;
     height: 440px;
     background-color: aliceblue;

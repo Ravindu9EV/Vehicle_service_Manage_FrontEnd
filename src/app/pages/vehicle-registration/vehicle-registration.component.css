@@ -1,0 +1,74 @@
+.searchBar{
+    width: 400px;
+     margin-bottom: 25px;
+    
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: center;
+    align-items: center;
+}
+.vehicleFormContainer{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.vehicleForm{
+    /* margin-left: 250px; */
+    width: 35vw;
+    background-color: #604166;
+    padding: 30px;
+    border-radius: 10px;
+}
+.detailRow{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    
+}
+.vehicleFormContainer h4{
+    text-align: center;
+    margin-top: -130px;
+    margin-bottom: 60px;
+    color: #160818;
+    font-weight: 600;
+}
+
+#userId{
+    width: 250px;
+    margin-left: -60px;
+    height: 30px;
+}
+#vehicleModel{
+    width: 250px;
+    margin-left: -60px;
+    height: 30px;
+}
+
+#licensePlate{
+    width: 250px;
+    margin-left: -60px;
+    height: 30px;
+}
+#vehicleMadeYear{
+    width: 180px;
+    margin-left: -60px;
+    height: 30px;
+}
+
+.vLabel{
+    color: #9846EE;
+    font-weight: 550;
+    
+}
+
+#btnRegister{
+    color: #9846EE;
+    background-color: #160818;
+    margin: 0 180px;
+    margin-top: 40px;
+}
+#btnRegister:hover{
+    background-color: #9846EE;
+    color: #160818;
+}

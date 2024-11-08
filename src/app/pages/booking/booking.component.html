@@ -54,14 +54,23 @@
 
   <div class="bookingDetails">
     <div class="timeSlots">
-      <button class="btn btnTimeSlot btn-light w-25">08:00am - 09:00am</button>
+      <button
+        class="btn btnTimeSlot btn-light"
+        *ngFor="let colour of buttonColor"
+        *ngFor="let time of timeSlots"
+        [ngStyle]="{ 'background-color': colour }"
+        (click)="fillBooking(time)"
+      >
+        {{ time }}
+      </button>
+      <!-- <button class="btn btnTimeSlot btn-light w-25">08:00am - 09:00am</button>
       <button class="btn btnTimeSlot btn-light w-25">09:00am - 10:00am</button>
       <button class="btn btnTimeSlot btn-light w-25">10:15am - 11:15am</button>
       <button class="btn btnTimeSlot btn-light w-25">11:15am - 12:15pm</button>
       <button class="btn btnTimeSlot btn-light w-25">13:00pm - 14:00pm</button>
       <button class="btn btnTimeSlot btn-light w-25">14:00pm - 15:00pm</button>
       <button class="btn btnTimeSlot btn-light w-25">15:20pm - 16:20pm</button>
-      <button class="btn btnTimeSlot btn-light w-25">16:20pm - 17:20pm</button>
+      <button class="btn btnTimeSlot btn-light w-25">16:20pm - 17:20pm</button> -->
     </div>
 
     <div class="bookingForm">
@@ -89,6 +98,10 @@
         </button>
       </div>
       <div class="insideLeyer">
+        <div class="col-auto insideRows">
+          <label for="bookedDate" class="form-label">Vehicle Id</label>
+          <input type="text" class="form-control" name="" id="bookedDate" />
+        </div>
         <div class="col-auto insideRows">
           <label for="bookedDate" class="form-label">Booking Date</label>
           <input type="text" class="form-control" name="" id="bookedDate" />

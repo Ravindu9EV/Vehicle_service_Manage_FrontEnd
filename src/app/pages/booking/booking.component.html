@@ -29,7 +29,7 @@
       </svg>
     </div>
   </div>
-  <h1 style="margin: 15px 35px">Select Time Slot</h1>
+  <h1 style="margin: 15px 35px" (click)="sd()">Select Time Slot</h1>
 
   <div class="form-control" id="bookingDate">
     <div class="fRow">
@@ -45,6 +45,8 @@
           name=""
           value=""
           id="selectedDate"
+          [min]="minDate"
+          [max]="maxDate"
         />
       </div>
     </div>
@@ -56,9 +58,7 @@
     <div class="timeSlots">
       <button
         class="btn btnTimeSlot btn-light"
-        *ngFor="let colour of buttonColor"
         *ngFor="let time of timeSlots"
-        [ngStyle]="{ 'background-color': colour }"
         (click)="fillBooking(time)"
       >
         {{ time }}

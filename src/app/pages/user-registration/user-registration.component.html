@@ -3,7 +3,7 @@
 
   <div class="registrationForm form-control">
     <div class="userForm">
-      <h4>User Details</h4>
+      <h4 (click)="clearTeaxtFields()">User Details</h4>
       <div class="col-auto detailRow">
         <label for="userName" class="form-label uLabel">Name</label>
         <input
@@ -17,11 +17,11 @@
       <div class="col-auto detailRow">
         <label for="userEmail" class="form-label uLabel">Email</label>
         <input
-          required
           type="email"
           id="userEmail"
           [(ngModel)]="newUser.email"
           class="form-control"
+          required
         />
       </div>
       <div class="col-auto detailRow">
@@ -38,7 +38,7 @@
         <input
           type="password"
           id="userPassword"
-          required
+          required="true"
           class="form-control"
           [(ngModel)]="newUser.password"
         />
@@ -46,24 +46,47 @@
     </div>
     <div class="vr"></div>
     <div class="vehicleForm">
-      <h4>Vehicle Details</h4>
+      <h4 (click)="getAllUsers()">Vehicle Details</h4>
       <div class="col-auto detailRow">
         <label for="vehicleModel" class="form-label vLabel">Model</label>
-        <input required type="text" class="form-control" id="vehicleModel" [(ngModel)]="newVehicle.model"/>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="vehicleModel"
+          [(ngModel)]="newVehicle.model"
+        />
       </div>
       <div class="col-auto detailRow">
         <label for="licensePlate" class="form-label vLabel"
           >License Plate</label
         >
-        <input required type="text" class="form-control" id="licensePlate" [(ngModel)]="newVehicle.licensePlate"/>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="licensePlate"
+          [(ngModel)]="newVehicle.licensePlate"
+        />
       </div>
       <div class="col-auto detailRow">
         <label for="vehicleMadeYear" class="form-label vLabel">Made Year</label>
-        <input required type="text" class="form-control" id="vehicleMadeYear" [(ngModel)]="newVehicle.madeYear"/>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="vehicleMadeYear"
+          [(ngModel)]="newVehicle.madeYear"
+        />
       </div>
     </div>
 
-    <button id="btnRegister" class="btn btn-light" type="submit" (click)="registerDetails()">
+    <button
+      id="btnRegister"
+      class="btn btn-light"
+      type="submit"
+      (click)="registerDetails()"
+    >
       Register
     </button>
   </div>

@@ -1,0 +1,251 @@
+<div class="topLev">
+  <app-admin-nav></app-admin-nav>
+  <button
+    type="button"
+    class="btn btn-success btn-outline-info"
+    style="color: rgb(31, 10, 45)"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    id="btnAddRepair"
+  >
+    Add New Repair
+  </button>
+</div>
+
+<h1 class="h1 bg-gradient">Repair Types</h1>
+
+<div class="tableContainer">
+  <table class="repairTable table table-bordered table-success m-4">
+    <tr>
+      <th>Count</th>
+      <th>Id</th>
+      <th>Type</th>
+      <th>Cost(Rs)</th>
+      <th>Duration</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let repair of repairs; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ repair.id }}</td>
+      <td>{{ repair.type }}</td>
+      <td>{{ repair.cost }}</td>
+      <td>{{ repair.duration }}</td>
+      <td>{{ repair.description }}</td>
+      <td>
+        <button
+          class="btn m-2 btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          (click)="updateRepair(repair)"
+        >
+          <i class="bi bi-pen"></i>
+        </button>
+        <button class="btn btn-danger" (click)="deleteRepair(repair.id)">
+          <i class="bi bi-trash3"></i>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for mdo</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for fat</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for getbootstrap</button> -->
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2
+          id="addTitle"
+          class="modal-title"
+          style="
+            color: blueviolet;
+            margin: 10px;
+            margin-left: 150px;
+
+            font-size: larger;
+            font-weight: bold;
+          "
+          id="exampleModalLabel"
+        >
+          Add New Repair
+        </h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="repairType" class="col-form-label">Repair Type:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="repairType"
+            [(ngModel)]="newRepair.type"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="repairCost" class="col-form-label">Cost:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="repairCost"
+            [(ngModel)]="newRepair.cost"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="repairDuration" class="col-form-label">Duration:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="repairDuration"
+            [(ngModel)]="newRepair.duration"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="repairDescription" class="col-form-label"
+            >Description:</label
+          >
+          <textarea
+            class="form-control"
+            id="repairDescription"
+            [(ngModel)]="newRepair.description"
+          ></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="clearTxt()"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="addNewRepair()"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------------------Update Repair -->
+
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+  </button> -->
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2
+            class="modal-title fs-5"
+            id="staticBackdropLabel"
+            style="
+              color: rgb(43, 226, 95);
+              margin: 10px;
+              margin-left: 150px;
+
+              font-size: larger;
+              font-weight: bold;
+            "
+          >
+            Update Repair
+          </h2>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="repairType" class="col-form-label">Repair Type:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="repairType"
+              [(ngModel)]="updateRepairDetails.type"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="repairCost" class="col-form-label">Cost:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="repairCost"
+              [(ngModel)]="updateRepairDetails.cost"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="repairDuration" class="col-form-label">Duration:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="repairDuration"
+              [(ngModel)]="updateRepairDetails.duration"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="repairDescription" class="col-form-label"
+              >Description:</label
+            >
+            <textarea
+              class="form-control"
+              id="repairDescription"
+              [(ngModel)]="updateRepairDetails.description"
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="updateR()"
+            data-bs-dismiss="modal"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

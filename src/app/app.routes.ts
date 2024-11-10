@@ -9,6 +9,11 @@ import { UserLoginFormComponent } from './pages/login/user-login-form/user-login
 import { AdminLoginFormComponent } from './pages/login/admin-login-form/admin-login-form.component';
 import { LoginDashboardComponent } from './pages/login/login-dashboard/login-dashboard.component';
 import { UserAccountComponent } from './pages/user/user-account/user-account.component';
+import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin-dashboard.component';
+import { BookingManageComponent } from './tables/admin/booking-manage/booking-manage.component';
+import { UserManageComponent } from './tables/admin/user-manage/user-manage.component';
+import { RepairManageComponent } from './tables/admin/repair-manage/repair-manage.component';
+import { ManageVehicleComponent } from './tables/admin/manage-vehicle/manage-vehicle.component';
 
 
 export const routes: Routes = [
@@ -43,5 +48,20 @@ export const routes: Routes = [
     },{
         path:"user-account",
         component: UserAccountComponent
+    },{
+        path:"admin-dashboard",
+        component:AdminDashboardComponent
+    },{
+        path:"booking-manage",
+        component:BookingManageComponent
+    },{
+        path:"user-manage",
+        component:UserManageComponent
+    },{
+        path: "repair-manage",
+        component:RepairManageComponent
+    },{
+        path:"vehicle-manage",
+        component:ManageVehicleComponent
     }
 ];

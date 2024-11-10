@@ -7,21 +7,55 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterLink,HttpClientModule,HttpParams],
+  imports: [CommonModule,FormsModule,RouterLink,HttpClientModule],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
-export class BookingComponent  {
+export class BookingComponent implements OnInit {
   constructor(private http:HttpClient){
      
     this.setButtonColor();
-      
+    
   }
+  ngOnInit(): void {
+    this.sd()
+  }
+
+  //-----------------Set Date-----------------
+  crntDate:Date=new Date();
+  crntYear:number=this.crntDate.getUTCFullYear()
+  crntMonth:number=this.crntDate.getUTCMonth()+1
+  crntDay:number=this.crntDate.getDay()
+  public minDate:string=this.crntYear+"-"+this.crntMonth+"-"+(this.crntDay+10) ;//"2024-11-10";
+  crntDayM:number=this.crntDay-10
+  public maxDate:string="2024-11-"+this.crntDayM;
+
+  sd(){
+    console.log(this.crntDay+"- d",this.crntMonth+"- M",this.crntYear);
+    
+  }
+  
+clearD(){
+  this.crntDay=0;
+    this.crntDay=0;
+    this.crntYear=0
+}
+
+
+
+
+
     date=new Date()
     dates=[];
     public timeSlots=["08:00am-09:00am","09:00am-10:00am","10:15am-11:15am","11:15am-12:15am","13:00am-14:00pm","14:00am-15:00pm","15:20am-16:20pm","16:20am-17:20pm"];
     public today:string=this.date.getFullYear().toString()+"/"+this.date.getMonth().toString()+"/"+this.date.getDate().toString();
     
+
+
+
+
+
+
    setTxtDate(){
     var choosed:any=document.getElementById("selectedDate");
     choosed?.addEventListener("click",(e:Event)=>{

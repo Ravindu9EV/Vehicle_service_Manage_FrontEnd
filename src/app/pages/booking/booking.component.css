@@ -1,7 +1,7 @@
 .bookContainer{
     display: flex;
     flex-direction: column;
-    margin-top: 00px;
+    margin-top: 60px;
     width: 70vw;
     height: 90vh;
     margin-left: 10px;
@@ -39,6 +39,7 @@
 }
 /* ---------------Booking----------------- */
 #bookingDate{
+    margin-top: 10px;
     width: 600px;
     background-color: rgba(137, 43, 226, 0.148);
 }
@@ -60,6 +61,7 @@
     width: 200px;
     display: grid;
     grid-template-columns: repeat(1,8fr);
+    margin-top: 15px;
 }
 .btnTimeSlot{
     margin-top: 12px;

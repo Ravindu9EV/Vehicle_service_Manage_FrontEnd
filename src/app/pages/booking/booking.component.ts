@@ -3,43 +3,60 @@ import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2'
+import { Repair } from '../../model/Repair';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterLink,HttpClientModule],
+  imports: [CommonModule,FormsModule,RouterLink],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
-export class BookingComponent implements OnInit {
+export class BookingComponent  {
   constructor(private http:HttpClient){
-     
-    this.setButtonColor();
     
-  }
-  ngOnInit(): void {
-    this.sd()
+    this.setButtonColor();
+    this.getRepairs()
+    this.loadCrntDate()
+    //this.getAvailableBooking()
+    // this.setBtnTimeSlots()
   }
 
+
   //-----------------Set Date-----------------
-  crntDate:Date=new Date();
+  public crntDate:Date=new Date();
   crntYear:number=this.crntDate.getUTCFullYear()
   crntMonth:number=this.crntDate.getUTCMonth()+1
   crntDay:number=this.crntDate.getDay()
   public minDate:string=this.crntYear+"-"+this.crntMonth+"-"+(this.crntDay+10) ;//"2024-11-10";
-  crntDayM:number=this.crntDay-10
-  public maxDate:string="2024-11-"+this.crntDayM;
+  crntDayM:number=this.crntDay
+  public maxDate:string=this.crntYear+"-12-30";
 
-  sd(){
+  async sd(){
     console.log(this.crntDay+"- d",this.crntMonth+"- M",this.crntYear);
     
   }
   
+  dpDate:any =  document.getElementById("selectedDate")?.textContent
+  public chck:String="";
+  loadCrntDate(){
+    const dt:Date =new Date()
+    this.booking.bookedDate=this.setDateFormat(dt.getUTCMonth()+1,dt.getUTCDate(),dt.getUTCFullYear())
+    this.booking.bookedDate=this.chck
+    //this.dpDate=this.booking.bookedDate;
+    this.setBtnTimeSlots()
+   return this.dpDate
+    
+  }
+  
+
 clearD(){
   this.crntDay=0;
     this.crntDay=0;
     this.crntYear=0
 }
+
 
 
 
@@ -53,46 +70,103 @@ clearD(){
 
 
 
-
-
-
-   setTxtDate(){
-    var choosed:any=document.getElementById("selectedDate");
-    choosed?.addEventListener("click",(e:Event)=>{
-      const selVal=e.target as HTMLInputElement;
-      console.log(selVal.value);
-      
-      this.today=selVal.value;
-      //checkDate:string=selVal.value.c+selVal.value.charAt(9);
-      console.log(selVal.value.substring(5,7));
-      let choosedYear:Number=Number.parseInt(selVal.value.substring(0,4))
-      let choosedMonth:Number=Number.parseInt(selVal.value.substring(5,7))
-      let choosedDate:Number=Number.parseInt(selVal.value.substring(8,));
-      console.log(choosedYear);
-      console.log(choosedMonth);
-      console.log(choosedDate);
-
-      this.setDateFormat(selVal.value.substring(5,7),selVal.value.substring(0,4),selVal.value.substring(8,).substring(0,4));
-
-      if(choosedYear > new Number(Number.parseInt(new Date().getFullYear().toString()))){
-          window.alert("Invalid Year!");
-          window
-      }
-    });
-
+    ///------------------------Get Available Booking-----------
+    getAvailableBooking(){
+      this.http.get(`http://localhost:8080/booking/get-available-booking/filter?bookedDate=${this.booking.bookedDate}&bookedTime=${this.booking.bookedTime}`).subscribe(data=>{
+        if(data!=null){
+          console.log(data);
+          
+          // this.timeSlots.forEach(d=>{
+          //   if(d===data.bookedTime){
+          //     console.log();
+              
+          //   }
+          // })
+        }
+      })
+    }
     
-   }
 
+    //---------------------design time slots acording to availble time-----------
+
+    setBtnTimeSlots(){
+      this.http.get(`http://localhost:8080/booking/search-booking-by-date/filter?bookedDate=${this.getCurrentDateFormat()}`).subscribe(data=>{
+          console.log(data);
+          
+
+      })
+    }
+
+    getCurrentDateFormat(){
+      const d:Date=new Date()
+      return d.getFullYear()+"-"+d.getUTCMonth()+"-"+d.getUTCDate()
+    }
+
+
+
+
+
+
+   
    // ---------set the service type-----------
    public dropDownDisplay:string='Choose Type'
-   public availableServices:string[]=["Routine Maintenance","Engine","Transmission","Breake","Electrical System","Susspension and Steering ","Heating And Air Conditioning","Exhaust and Emission Control","Other"];
+   //["Routine Maintenance","Engine","Transmission","Breake","Electrical System","Susspension and Steering ","Heating And Air Conditioning","Exhaust and Emission Control","Other"];
    public buttonColor:string[]=[]
-   
+   repairList:Repair[]=[]
+   public availableServices:string[]=[]
+
+    getRepairs(){
+      this.http.get<Repair[]>("http://localhost:8080/repair/get-all").subscribe(data=>{
+        data.forEach(rep=>{
+          this.repairList.push(rep)
+        })
+        console.log(data);
+        console.log(this.repairList);
+        this.setAvailableServices()
+      })
+      
+     
+    }
+
+  
+  
+
+    setAvailableServices(){
+     
+        this.repairList.forEach(d=>{
+          console.log(d.type);
+          this.availableServices.push(d.type)
+        })
+      
+      console.log(this.availableServices);
+      
+      
+    }
+
+    public booking:any={
+      vehicleId:null,
+      bookedDate:"",
+      bookedTime:"",
+      repairId:null,
+      description:""
+    }
+
+    //---------------set Service Type--------------------
    setSelectedType(serviceType:string){
       this.dropDownDisplay=serviceType;
+      this.setRepairId(serviceType)
    }
-    public booking:any={}
+    
    
+   setRepairId(type:string){
+    this.repairList.forEach(d=>{
+      if((d.type===type)){
+          this.booking.repairId=d.id
+          console.log(this.booking.repairId);
+          
+      }
+    })
+   }
   
       //-----------set timeslot btns color----------
     private currentDate:Date=new Date();
@@ -103,8 +177,12 @@ clearD(){
       return this.formatDate=month.toString()+"/"+day.toString()+"/"+year.toString();
     }
     fillBooking(time:any){
-        alert(time+"\n"+(document.getElementById("selectedDate")?.innerText))
+        //alert(time+"\n"+(document.getElementById("selectedDate")?.innerText))
+        this.booking.bookedTime=time
      }
+
+
+
 
     public isAvailable:boolean=false;
     private choosedTime:string="";
@@ -113,9 +191,14 @@ clearD(){
       
         this.choosedTime=choosedTime.toString();
     }
+
+    
+    
+
+
     params:HttpParams=new HttpParams()
    
-    async setTimeSlotsAvailabilityByDate(choosedDate:string){
+     setTimeSlotsAvailabilityByDate(choosedDate:string){
       this.params=new HttpParams().set("bookedDate",choosedDate).set("bookedTime",this.choosedTime);
       this.http.get("http://localhost:8080/booking/get-available-booking",{ params:this.params }).subscribe((data)=>{
           console.log(data);
@@ -155,6 +238,75 @@ clearD(){
        })
     }
     
+    setTxtDate(){
+      var choosed:any=document.getElementById("selectedDate");
+      choosed?.addEventListener("click",(e:Event)=>{
+        const selVal=e.target as HTMLInputElement;
+        console.log(selVal.value);
+        
+        this.today=selVal.value;
+        //checkDate:string=selVal.value.c+selVal.value.charAt(9);
+        console.log(selVal.value.substring(5,7));
+        let choosedYear:Number=Number.parseInt(selVal.value.substring(0,4))
+        let choosedMonth:Number=Number.parseInt(selVal.value.substring(5,7))
+        let choosedDate:Number=Number.parseInt(selVal.value.substring(8,));
+        console.log(choosedYear);
+        console.log(choosedMonth);
+        console.log(choosedDate);
+        this.booking.bookedDate=choosedYear+"-"+choosedMonth+"-"+choosedDate
+        this.setDateFormat(selVal.value.substring(5,7),selVal.value.substring(0,4),selVal.value.substring(8,).substring(0,4));
+  
+        if(choosedYear > new Number(Number.parseInt(new Date().getFullYear().toString()))){
+            window.alert("Invalid Year!");
+            window
+        }
+      });
+  
+      
+     }
+
+     public inputedVId:any;
+     searchVehicleId:number=0;
+    
+     
+     //----------SearchVehicle-----------------
+     searchVehicle(){
+      this.searchVehicleId=Number.parseInt(this.inputedVId.toString())
+     
+      if(this.searchVehicleId>0){
+        this.http.get(`http://localhost:8080/vehicle/search-by-id/${this.searchVehicleId}`).subscribe(data=>{
+          if(data!=null){
+            this.booking.vehicleId=this.searchVehicleId;
+          }else{
+            alert("oops")
+          }
+        })
+      }else{
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Wrong Id!\n\nRegister Befor choose a Booking if haven't",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
+      this.booking.vehicleId=""
+      this.searchVehicleId
+      }
+     }
+
+
+
+
+     //-----------------Add Booking--------------------------
+
+     addBooking(){
+      this.http.post("http://localhost:8080/booking/add-booking",this.booking).subscribe(data=>{
+        if(data){
+          alert("added")
+        }
+      })
+
+     }
+  
   }
   
     

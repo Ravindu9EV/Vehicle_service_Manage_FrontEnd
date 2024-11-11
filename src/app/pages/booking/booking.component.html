@@ -1,6 +1,6 @@
-<div class="bookContainer">
+<div class="container container-fluid bookContainer" id="mc">
   <div class="topLevel">
-    <div [routerLink]="['/vehicle-registration']" class="carIcon">
+    <div [routerLink]="['/vehicle-registration']" type="button" class="carIcon">
       <svg
         class="account"
         xmlns="http://www.w3.org/2000/svg"
@@ -13,6 +13,13 @@
           d="M240-200v40q0 17-11.5 28.5T200-120h-40q-17 0-28.5-11.5T120-160v-320l84-240q6-18 21.5-29t34.5-11h440q19 0 34.5 11t21.5 29l84 240v320q0 17-11.5 28.5T800-120h-40q-17 0-28.5-11.5T720-160v-40H240Zm-8-360h496l-42-120H274l-42 120Zm-32 80v200-200Zm100 160q25 0 42.5-17.5T360-380q0-25-17.5-42.5T300-440q-25 0-42.5 17.5T240-380q0 25 17.5 42.5T300-320Zm360 0q25 0 42.5-17.5T720-380q0-25-17.5-42.5T660-440q-25 0-42.5 17.5T600-380q0 25 17.5 42.5T660-320Zm-460 40h560v-200H200v200Z"
         />
       </svg>
+      <!-- <button
+      [routerLink]="['/vehicle-registration']"
+      type="button"
+      class="btn carIcon"
+    >
+      <i class="bi bi-car-front-fill"></i>
+    </button> -->
     </div>
     <div [routerLink]="['/user-registration']" class="userIcon">
       <svg
@@ -38,27 +45,27 @@
       </div>
       <div class="col-auto">
         <input
-          (click)="setTxtDate()"
           class="form-control"
           style="width: 150px; height: 35px"
           type="date"
           name=""
-          value=""
+          [value]="crntDate"
           id="selectedDate"
+          [(ngModel)]="booking.bookedDate"
           [min]="minDate"
           [max]="maxDate"
+          (click)="getAvailableBooking()"
         />
       </div>
     </div>
   </div>
 
-  <h3 id="datePicker">{{ today }}</h3>
-
   <div class="bookingDetails">
     <div class="timeSlots">
       <button
         class="btn btnTimeSlot btn-light"
-        *ngFor="let time of timeSlots"
+        *ngFor="let time of timeSlots; index as i"
+        id="timeSlots[i]"
         (click)="fillBooking(time)"
       >
         {{ time }}
@@ -81,9 +88,10 @@
           type="search"
           placeholder="Vehicle Id"
           aria-label="Search"
+          [(ngModel)]="inputedVId"
         />
 
-        <button id="btnSearch" class="btn btn-light">
+        <button id="btnSearch" class="btn btn-light" (click)="searchVehicle()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -99,16 +107,34 @@
       </div>
       <div class="insideLeyer">
         <div class="col-auto insideRows">
-          <label for="bookedDate" class="form-label">Vehicle Id</label>
-          <input type="text" class="form-control" name="" id="bookedDate" />
+          <label for="vehicleId" class="form-label">Vehicle Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            [(ngModel)]="booking.vehicleId"
+            id="vehicleId"
+          />
         </div>
         <div class="col-auto insideRows">
           <label for="bookedDate" class="form-label">Booking Date</label>
-          <input type="text" class="form-control" name="" id="bookedDate" />
+          <input
+            type="text"
+            [(ngModel)]="booking.bookedDate"
+            class="form-control"
+            name=""
+            id="bookedDate"
+          />
         </div>
         <div class="col-auto insideRows">
           <label for="bookedTime" class="form-label">Booking Time</label>
-          <input type="text" class="form-control" name="" id="bookedTime" />
+          <input
+            type="text"
+            [(ngModel)]="booking.bookedTime"
+            class="form-control"
+            name=""
+            id="bookedTime"
+          />
         </div>
         <div class="col-auto insideRows">
           <label for="bookedTime" class="form-label">Service Type</label>
@@ -136,7 +162,12 @@
           <label for="bookedDesc" class="form-label">Description</label>
           <input type="text" class="form-control" name="" id="bookedDesc" />
         </div>
-        <button class="btn btn-light" id="btnConfirm" type="submit">
+        <button
+          class="btn btn-light"
+          id="btnConfirm"
+          (click)="addBooking()"
+          type="submit"
+        >
           Book
         </button>
       </div>

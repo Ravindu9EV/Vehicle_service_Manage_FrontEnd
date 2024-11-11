@@ -14,20 +14,29 @@
 
 <h1 class="h1 bg-gradient">Repair Types</h1>
 
-<div class="tableContainer">
-  <table class="repairTable table table-bordered table-success m-4">
-    <tr>
-      <th>Count</th>
-      <th>Id</th>
-      <th>Type</th>
-      <th>Cost(Rs)</th>
-      <th>Duration</th>
-      <th>Description</th>
-      <th>Action</th>
-    </tr>
+<div class="tableContainer overflow-scroll">
+  <table
+    class="table table-striped table-hover"
+    class="repairTable table table-bordered table-success m-4"
+  >
+    <thead>
+      <tr>
+        <th>Count</th>
+        <th>Id</th>
+        <th>Type</th>
+        <th>Cost(Rs)</th>
+        <th>Duration</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-    <tr *ngFor="let repair of repairs; index as i">
-      <td>{{ i + 1 }}</td>
+    <tr
+      *ngFor="let repair of repairs; index as i"
+      class="table-success"
+      style="color: rgb(214, 110, 255)"
+    >
+      <td style="color: rgb(220, 162, 243)">{{ i + 1 }}</td>
       <td>{{ repair.id }}</td>
       <td>{{ repair.type }}</td>
       <td>{{ repair.cost }}</td>

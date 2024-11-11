@@ -1,0 +1,14 @@
+.cr{
+    height: 350px;
+
+    background-color: rgba(111, 23, 211, 0.248);
+    margin: 10px;;
+    overflow: scroll;
+    padding: 20px 15px;
+}
+
+.cb{
+   
+    
+    background-color: rgba(185, 243, 167, 0.944)
+}

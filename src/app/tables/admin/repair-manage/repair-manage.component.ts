@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminNavComponent } from '../../../pages/common/admin-nav/admin-nav.component';
 import { elementAt } from 'rxjs';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-repair-manage',
   standalone: true,
@@ -55,8 +55,13 @@ export class RepairManageComponent  {
          this.loadRepairTable();
        
        }else{
-         alert("Invalid Details!!!")
-         
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Every Filed must bu filled!",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
+        this.clearTxt();
        }
      })
     
@@ -65,18 +70,36 @@ export class RepairManageComponent  {
   //----------------Delete a Repair---------------
 
   deleteRepair(id:any){
-    this.http.delete(`http://localhost:8080/repair/delete-by-id/${id}`).subscribe(data=>{
-      if(data){
-        console.log(data);
-        
-        alert("Successfully Deleted!")
-        this.loadRepairTable()
-        
-      }else{
-        alert("Invalid Id")
-      }
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.http.delete(`http://localhost:8080/repair/delete-by-id/${id}`).subscribe(data=>{
+          if(data){
+            
+            this.loadRepairTable()
+            
+          }else{
+            alert("Didn't delete! ")
+          }
+          
+        })
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
       
-    })
+      }
+    });
+    
   }
   //-------------update repair-------------------------------
   public updateRepairDetails:any={

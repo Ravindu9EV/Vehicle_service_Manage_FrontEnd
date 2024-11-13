@@ -1,20 +1,193 @@
 <header>
-    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
-        <span class="fs-4">Pricing example</span>
-      </a>
+  <div
+    class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"
+  >
+    <a
+      href="/"
+      class="d-flex align-items-center link-body-emphasis text-decoration-none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="32"
+        class="me-2"
+        viewBox="0 0 118 94"
+        role="img"
+      >
+        <title>Bootstrap</title>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+          fill="currentColor"
+        ></path>
+      </svg>
+      <span class="fs-4">Pricing example</span>
 
-      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Features</a>
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Enterprise</a>
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Support</a>
-        <a class="py-2 link-body-emphasis text-decoration-none" href="#">Pricing</a>
-      </nav>
-    </div>
+      <span></span>
+    </a>
 
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal text-body-emphasis">Pricing</h1>
-      <p class="fs-5 text-body-secondary">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+      <a
+        class="me-3 py-2 link-body-emphasis text-decoration-none"
+        routerLink="/update-user-details"
+        >Update Details</a
+      >
+      <a
+        class="me-3 py-2 link-body-emphasis text-decoration-none"
+        routerLink="user-bookings"
+        >My Bookings</a
+      >
+
+      <a
+        class="me-3 py-2 link-body-emphasis text-decoration-none"
+        routerLink="user-repairs"
+        >Repair History</a
+      >
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none">Support</a>
+      <a class="py-2 link-body-emphasis text-decoration-none">Offers</a>
+    </nav>
+  </div>
+
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal text-body-emphasis">Pricing</h1>
+    <p class="fs-5 text-body-secondary">
+      Quickly build an effective pricing table for your potential customers with
+      this Bootstrap example. It’s built with default Bootstrap components and
+      utilities with little customization.
+    </p>
+  </div>
+</header>
+<button
+  class="btn btn-success btnUpdate"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Update Details
+</button>
+<div class="subContainer">
+  <router-outlet></router-outlet>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="registrationForm form-control">
+          <div class="userForm">
+            <h4 (click)="clearTextFields()">User Details</h4>
+            <div class="col-auto detailRow">
+              <label for="userName" class="form-label uLabel">Name</label>
+              <input
+                required
+                type="text"
+                id="userName"
+                [(ngModel)]="updateUser.name"
+                class="form-control"
+              />
+            </div>
+            <div class="col-auto detailRow">
+              <label for="userEmail" class="form-label uLabel">Email</label>
+              <input
+                type="email"
+                id="userEmail"
+                [(ngModel)]="updateUser.email"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-auto detailRow">
+              <label for="userContact" class="form-label uLabel">Contact</label>
+              <input
+                type="text"
+                id="userContact"
+                [(ngModel)]="updateUser.contact"
+                class="form-control"
+              />
+            </div>
+            <div class="col-auto detailRow">
+              <label for="userPassword" class="form-label uLabel"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="userPassword"
+                required="true"
+                class="form-control"
+                [(ngModel)]="updateUser.password"
+              />
+            </div>
+          </div>
+          <div class="vr"></div>
+          <div class="vehicleForm">
+            <h4>Vehicle Details</h4>
+            <div class="col-auto detailRow">
+              <label for="vehicleModel" class="form-label vLabel">Model</label>
+              <input
+                required
+                type="text"
+                class="form-control"
+                id="vehicleModel"
+                [(ngModel)]="updateVehicle.model"
+              />
+            </div>
+            <div class="col-auto detailRow">
+              <label for="licensePlate" class="form-label vLabel"
+                >License Plate</label
+              >
+              <input
+                required
+                type="text"
+                class="form-control"
+                id="licensePlate"
+                [(ngModel)]="updateVehicle.licensePlate"
+              />
+            </div>
+            <div class="col-auto detailRow">
+              <label for="vehicleMadeYear" class="form-label vLabel"
+                >Made Year</label
+              >
+              <input
+                required
+                type="text"
+                class="form-control"
+                id="vehicleMadeYear"
+                [(ngModel)]="updateVehicle.madeYear"
+              />
+            </div>
+          </div>
+
+          <button
+            id="btnRegister"
+            class="btn btn-light"
+            type="submit"
+            (click)="updateCustomer()"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
     </div>
-  </header>
+  </div>
+</div>

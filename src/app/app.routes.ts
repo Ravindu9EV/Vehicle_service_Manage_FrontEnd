@@ -14,54 +14,87 @@ import { BookingManageComponent } from './tables/admin/booking-manage/booking-ma
 import { UserManageComponent } from './tables/admin/user-manage/user-manage.component';
 import { RepairManageComponent } from './tables/admin/repair-manage/repair-manage.component';
 import { ManageVehicleComponent } from './tables/admin/manage-vehicle/manage-vehicle.component';
-
+import { UserBookingComponent } from './tables/user/user-booking/user-booking.component';
+import { UserRepairsComponent } from './tables/user/user-repairs/user-repairs.component';
+import { UpdateDetailsComponent } from './pages/user/update-details/update-details.component';
 
 export const routes: Routes = [
-
-    {
-        path:"",
-        component: DashboardComponent
-    },{
-        path:"services",
-        component: ServicesComponent
-    },{
-        path:"booking",
-        component:BookingComponent
-    },{
-        path:"vehicle",
-        component:VehicleComponent
-    },{
-        path:"vehicle-registration",
-        component: VehicleRegistrationComponent
-    },{
-        path:"user-registration",
-        component: UserRegistrationComponent
-    },{
-        path:"login-dashboard",
-        component: LoginDashboardComponent
-    },{
-        path: "user-login",
-        component: UserLoginFormComponent
-    },{
-        path: "admin-login",
-        component: AdminLoginFormComponent
-    },{
-        path:"user-account",
-        component: UserAccountComponent
-    },{
-        path:"admin-dashboard",
-        component:AdminDashboardComponent
-    },{
-        path:"booking-manage",
-        component:BookingManageComponent
-    },{
-        path:"user-manage",
-        component:UserManageComponent
-    },{
-        path: "repair-manage",
-        component:RepairManageComponent
-    },{
-        path:"vehicle-manage",
-        component:ManageVehicleComponent
-    }
+  {
+    path: '',
+    component: DashboardComponent,
+  },
+  {
+    path: 'services',
+    component: ServicesComponent,
+  },
+  {
+    path: 'booking',
+    component: BookingComponent,
+  },
+  {
+    path: 'vehicle',
+    component: VehicleComponent,
+  },
+  {
+    path: 'vehicle-registration',
+    component: VehicleRegistrationComponent,
+  },
+  {
+    path: 'user-registration',
+    component: UserRegistrationComponent,
+  },
+  {
+    path: 'login-dashboard',
+    component: LoginDashboardComponent,
+  },
+  {
+    path: 'user-login',
+    component: UserLoginFormComponent,
+  },
+  {
+    path: 'admin-login',
+    component: AdminLoginFormComponent,
+  },
+  {
+    path: 'user-account',
+    component: UserAccountComponent,
+    children: [
+      {
+        path: 'user-account',
+        component: UserAccountComponent,
+      },
+      {
+        path: 'user-bookings',
+        component: UserBookingComponent,
+      },
+      {
+        path: 'user-repairs',
+        component: UserRepairsComponent,
+      },
+    ],
+  },
+  {
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent,
+  },
+  {
+    path: 'booking-manage',
+    component: BookingManageComponent,
+  },
+  {
+    path: 'user-manage',
+    component: UserManageComponent,
+  },
+  {
+    path: 'repair-manage',
+    component: RepairManageComponent,
+  },
+  {
+    path: 'vehicle-manage',
+    component: ManageVehicleComponent,
+  },
+  {
+    path: 'update-user-details',
+    component: UpdateDetailsComponent,
+  },
 ];

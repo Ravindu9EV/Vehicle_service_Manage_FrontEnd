@@ -1,0 +1,113 @@
+<div class="registrationForm form-control">
+  <div class="userForm">
+    <h4 (click)="clearTextFields()">User Details</h4>
+    <div class="col-auto detailRow">
+      <label for="userName" class="form-label uLabel">Name</label>
+      <input
+        required
+        type="text"
+        id="userName"
+        [(ngModel)]="newUser.name"
+        class="form-control"
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="userEmail" class="form-label uLabel">Email</label>
+      <input
+        type="email"
+        id="userEmail"
+        [(ngModel)]="newUser.email"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="userContact" class="form-label uLabel">Contact</label>
+      <input
+        type="text"
+        id="userContact"
+        [(ngModel)]="newUser.contact"
+        class="form-control"
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="userPassword" class="form-label uLabel">Password</label>
+      <input
+        type="password"
+        id="userPassword"
+        required="true"
+        class="form-control"
+        [(ngModel)]="newUser.password"
+      />
+    </div>
+  </div>
+  <div class="vr"></div>
+  <div class="vehicleForm">
+    <h4 (click)="getAllUsers()">Vehicle Details</h4>
+
+    <div class="searchRow">
+      <input
+        id="searchVId"
+        class="form-control me-2"
+        type="search"
+        placeholder="Vehicle Id"
+        aria-label="Search"
+        [(ngModel)]="inputedVId"
+        (click)="clearTxt()"
+      />
+
+      <button id="btnSearch" class="btn btn-light" (click)="searchVehicle()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#BF8CF5"
+        >
+          <path
+            d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="col-auto detailRow">
+      <label for="vehicleModel" class="form-label vLabel">Model</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        id="vehicleModel"
+        [(ngModel)]="newVehicle.model"
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="licensePlate" class="form-label vLabel">License Plate</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        id="licensePlate"
+        [(ngModel)]="newVehicle.licensePlate"
+      />
+    </div>
+    <div class="col-auto detailRow">
+      <label for="vehicleMadeYear" class="form-label vLabel">Made Year</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        id="vehicleMadeYear"
+        [(ngModel)]="newVehicle.madeYear"
+      />
+    </div>
+  </div>
+
+  <button
+    id="btnRegister"
+    class="btn btn-light"
+    type="submit"
+    (click)="updateUser()"
+  >
+    Update
+  </button>
+</div>

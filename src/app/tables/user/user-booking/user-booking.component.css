@@ -1,0 +1,10 @@
+.subContainer{
+    width: 75vw;
+    height: 400px;
+    overflow: scroll;
+    background-color: rgba(137, 43, 226, 0.385);
+}
+
+.repairTable{
+    width: 70vw;
+}

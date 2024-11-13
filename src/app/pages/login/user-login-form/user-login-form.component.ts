@@ -5,17 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserAccountComponent } from '../../user/user-account/user-account.component';
 import { AdminDashboardComponent } from '../../dashboard/admin-dashboard/admin-dashboard.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-login-form',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    HttpClientModule,
-    UserAccountComponent,
-    AdminDashboardComponent,
-  ],
+  imports: [FormsModule, CommonModule],
   templateUrl: './user-login-form.component.html',
   styleUrl: './user-login-form.component.css',
 })
@@ -30,16 +25,20 @@ export class UserLoginFormComponent {
     .getElementById('userPassword')
     ?.textContent?.toString();
   checkLogin() {
-    alert('ho');
     console.log(this.login);
     this.http
-      .get('http://localhost:8080/login/user-login', this.login)
+      .post('http://localhost:8080/login/user-login', this.login)
       .subscribe((data) => {
-        console.log(data);
         if (data) {
-          this.router.navigate(['/admin-dashboard']);
+          console.log(data);
+          this.router.navigate(['/user-account']);
         } else {
-          alert('Oops');
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!,May be Email or Vehicle with the same License Plate already Registerd!',
+            footer: '<a href="#">Why do I have this issue?</a>',
+          });
         }
       });
   }

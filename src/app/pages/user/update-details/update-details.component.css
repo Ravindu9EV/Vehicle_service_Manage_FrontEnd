@@ -1,0 +1,108 @@
+
+
+.registrationForm{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3,2fr);
+     background-color: #604166;
+     
+}
+.userForm{
+    width: 42vw;
+    height: 400px;
+    /* background-color: #d59de0; */
+    margin-right: 0px;
+}
+.vr{
+    margin-top: 45px;
+    width: 4px;
+    height: 300px;
+
+    background-color: rgb(7, 251, 40);
+}
+.vehicleForm{
+    width: 35vw;
+    height: 400px;
+    /* background-color: #b784c1; */
+    margin-left: -275px;
+}
+
+
+.vehicleForm h4,.userForm h4{
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #9846EE;
+}
+.searchRow{
+   
+    margin-top: 20px;
+    margin-left: 180px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+#searchVId{
+    width: 160px;
+}
+#btnSearch{
+    width: 50px;
+    margin-left: 10px;
+}
+.detailRow{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    
+}
+.vLabel{
+    margin-left: 40px;
+}
+#vehicleModel{
+    width: 300px;
+    margin-left: -80px;
+}
+
+#licensePlate{
+    width: 250px;
+    margin-left: -80px;
+}
+#vehicleMadeYear{
+    width: 180px;
+    margin-left: -80px;
+}
+
+.uLabel{
+    margin-left: 40px;
+}
+#userName{
+    width: 300px;
+    margin-left: -140px;
+}
+#userEmail{
+    width:250px;
+    margin-left: -140px;
+
+}
+#userContact{
+    width: 220px;
+    margin-left: -140px;
+}
+#userPassword{
+    width: 215px;
+    margin-left: -140px;
+}
+
+#btnRegister{
+    width: 200px;
+    height: 30px;
+    border: none;
+    color: #160818;
+    background-color:  #9846EE;
+    margin-left: 400px;
+    margin-bottom: 25px;
+}
+#btnRegister:hover{
+    background-color: #160818;
+    color:  #9846EE;
+   box-shadow: 2px 4px 2px #9846EE;
+}

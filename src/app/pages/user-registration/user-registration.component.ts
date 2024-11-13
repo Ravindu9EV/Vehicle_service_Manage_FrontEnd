@@ -125,7 +125,7 @@ export class UserRegistrationComponent {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!,May be Email already Registerd!',
+            text: 'Something went wrong!,May be Email or Vehicle with the same License Plate already Registerd!',
             footer: '<a href="#">Why do I have this issue?</a>',
           });
         }

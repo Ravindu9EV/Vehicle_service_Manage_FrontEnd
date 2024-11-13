@@ -54,7 +54,7 @@
           [(ngModel)]="booking.bookedDate"
           [min]="minDate"
           [max]="maxDate"
-          (click)="getAvailableBooking()"
+          (click)="getAllBookings(crntDate)"
         />
       </div>
     </div>
@@ -89,6 +89,7 @@
           placeholder="Vehicle Id"
           aria-label="Search"
           [(ngModel)]="inputedVId"
+          (click)="clearTxt()"
         />
 
         <button id="btnSearch" class="btn btn-light" (click)="searchVehicle()">
@@ -114,6 +115,7 @@
             name=""
             [(ngModel)]="booking.vehicleId"
             id="vehicleId"
+            disabled
           />
         </div>
         <div class="col-auto insideRows">
@@ -134,6 +136,7 @@
             class="form-control"
             name=""
             id="bookedTime"
+            disabled
           />
         </div>
         <div class="col-auto insideRows">

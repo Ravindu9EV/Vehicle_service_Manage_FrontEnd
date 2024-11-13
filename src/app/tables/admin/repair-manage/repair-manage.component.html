@@ -15,11 +15,8 @@
 <h1 class="h1 bg-gradient">Repair Types</h1>
 
 <div class="tableContainer overflow-scroll">
-  <table
-    class="table table-striped table-hover"
-    class="repairTable table table-bordered table-success m-4"
-  >
-    <thead>
+  <table class="table repairTable table-bordered table-success m-4 table-hover">
+    <thead class="">
       <tr>
         <th>Count</th>
         <th>Id</th>
@@ -27,35 +24,37 @@
         <th>Cost(Rs)</th>
         <th>Duration</th>
         <th>Description</th>
-        <th>Action</th>
+        <th style="width: 100px">Action</th>
       </tr>
     </thead>
 
-    <tr
-      *ngFor="let repair of repairs; index as i"
-      class="table-success"
-      style="color: rgb(214, 110, 255)"
-    >
-      <td style="color: rgb(220, 162, 243)">{{ i + 1 }}</td>
-      <td>{{ repair.id }}</td>
-      <td>{{ repair.type }}</td>
-      <td>{{ repair.cost }}</td>
-      <td>{{ repair.duration }}</td>
-      <td>{{ repair.description }}</td>
-      <td>
-        <button
-          class="btn m-2 btn-success"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-          (click)="updateRepair(repair)"
-        >
-          <i class="bi bi-pen"></i>
-        </button>
-        <button class="btn btn-danger" (click)="deleteRepair(repair.id)">
-          <i class="bi bi-trash3"></i>
-        </button>
-      </td>
-    </tr>
+    <tbody table-striped table-hover>
+      <tr
+        *ngFor="let repair of repairs; index as i"
+        class="table-success"
+        style="color: rgb(214, 110, 255)"
+      >
+        <td style="color: rgb(220, 162, 243)">{{ i + 1 }}</td>
+        <td class="table-success">{{ repair.id }}</td>
+        <td>{{ repair.type }}</td>
+        <td>{{ repair.cost }}</td>
+        <td>{{ repair.duration }}</td>
+        <td>{{ repair.description }}</td>
+        <td style="width: 150px">
+          <button
+            class="btn m-2 btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            (click)="updateRepair(repair)"
+          >
+            <i class="bi bi-pen"></i>
+          </button>
+          <button class="btn btn-danger" (click)="deleteRepair(repair.id)">
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
 

@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminNavComponent } from '../../../pages/common/admin-nav/admin-nav.component';
 import { elementAt } from 'rxjs';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 @Component({
   selector: 'app-repair-manage',
   standalone: true,
@@ -51,8 +52,14 @@ export class RepairManageComponent  {
         if(data){
           console.log(data);
           
-         alert("Successfully Added!")
-         this.loadRepairTable();
+        
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
        
        }else{
         Swal.fire({
@@ -70,37 +77,56 @@ export class RepairManageComponent  {
   //----------------Delete a Repair---------------
 
   deleteRepair(id:any){
-
-    Swal.fire({
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         this.http.delete(`http://localhost:8080/repair/delete-by-id/${id}`).subscribe(data=>{
+         
           if(data){
-            
-            this.loadRepairTable()
-            
-          }else{
-            alert("Didn't delete! ")
+            swalWithBootstrapButtons.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
           }
-          
         })
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
+        
+      } else if (
+        /* Read more about handling dismissals below */
+        
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Your imaginary file is safe :)",
+          icon: "error"
         });
-      
       }
     });
     
+   
   }
+        
+   
+    
+  
+
+     
+  
   //-------------update repair-------------------------------
   public updateRepairDetails:any={
     id:null,
@@ -135,7 +161,13 @@ export class RepairManageComponent  {
 
   //------------------clear Txt-----------
   clearTxt(){
-    this.newRepair={}
+    this.newRepair={
+      id:null,
+      type:"",
+      cost:"",
+      duration:"",
+      description:""
+    }
     
   }
   

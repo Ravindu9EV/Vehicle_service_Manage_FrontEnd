@@ -125,7 +125,7 @@ export class UserRegistrationComponent {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!,May be Email or Vehicle with the same License Plate already Registerd!',
+            text: 'Something went wrong!,Please make sure to fill every field of User details & Vehicle details!',
             footer: '<a href="#">Why do I have this issue?</a>',
           });
         }
@@ -135,7 +135,6 @@ export class UserRegistrationComponent {
       });
     return false;
   }
-
 
   //--------------Get User details------------------
   getAllUsers() {

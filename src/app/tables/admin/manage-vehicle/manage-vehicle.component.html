@@ -2,6 +2,14 @@
 <div class="topLev">
   <app-admin-nav></app-admin-nav>
 </div>
+
+<button
+  type="button"
+  class="btn btn-light btnAddVehicle"
+  routerLink="/vehicle-registration"
+>
+  Add Vehicle
+</button>
 <div class="vehicleTableContainer">
   <table
     class="table table-dark table-bordered table-successtable table-striped table-hover"
@@ -25,13 +33,13 @@
         <td>{{ vehicle.model }}</td>
         <td>{{ vehicle.licensePlate }}</td>
         <td>{{ vehicle.madeYear }}</td>
-        <td>
-          <!-- <button class="btn btn-success"><i class="bi bi-pen-fill"></i></button>
+        <!-- <td> -->
+        <!-- <button class="btn btn-success"><i class="bi bi-pen-fill"></i></button>
         <button class="btn btn-danger" (click)="deleteVehicle(i)">
           <i class="bi bi-trash-fill"></i> -->
-          <!-- <i class="bi bi-layout-text-sidebar"></i> -->
-          <!-- </button> -->
-        </td>
+        <!-- <i class="bi bi-layout-text-sidebar"></i> -->
+        <!-- </button> -->
+        <!-- </td> -->
       </tr>
     </tbody>
   </table>

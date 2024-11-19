@@ -10,6 +10,19 @@
   <button class="btn btn-outline-success w-25" type="submit"><i class="bi bi-search"></i></button>
   
   </div> -->
+  <div class="row searchBar">
+    <input
+      type="search"
+      [(ngModel)]="searchUserId"
+      (click)="clearTxt()"
+      name=""
+      id="userIdInput"
+      placeholder="User ID"
+    />
+    <button class="btn btn-light btnSearch" (click)="searchUser()">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
   <div class="vehicleForm">
     <div class="col-auto detailRow">
       <label for="userId" class="form-label vLabel">User Id</label>
@@ -19,6 +32,7 @@
         class="form-control"
         [(ngModel)]="vehicle.userId"
         id="userId"
+        disabled
       />
     </div>
     <div class="col-auto detailRow">

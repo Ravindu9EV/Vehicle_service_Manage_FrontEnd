@@ -3,9 +3,31 @@
   <app-admin-nav></app-admin-nav>
 </div>
 
-<button type="button" class="btn btn-light btnAddBooking" routerLink="/booking">
-  Add Booking
-</button>
+<div class="row">
+  <div class="col searchCol">
+    <input
+      type="search"
+      [(ngModel)]="searchBookingId"
+      placeholder="Booking ID"
+    />
+    <button
+      class="btn btn-light m-2"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      (click)="searchBooking(searchBookingId)"
+    >
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+  <button
+    type="button"
+    class="btn btn-light btnAddBooking"
+    routerLink="/booking"
+  >
+    Add Booking
+  </button>
+</div>
+
 <div class="bookingTableContainer">
   <table
     class="table bookingTable table-bordered table-success m-4 table-hover"

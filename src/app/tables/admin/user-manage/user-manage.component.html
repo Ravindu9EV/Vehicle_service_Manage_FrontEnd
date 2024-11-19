@@ -1,22 +1,40 @@
+<h1 class="h1 bg-gradient">User Management</h1>
 <div class="topLev">
   <app-admin-nav></app-admin-nav>
 </div>
 
-<h1 class="h1 bg-gradient">User Management</h1>
-<table id="userTable" class="table table-bordered table-success">
-  <tr>
-    <th>Count</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Contact</th>
-    <th>Email</th>
-  </tr>
+<button
+  routerLink="/user-registration"
+  type="button"
+  class="btn btn-light btnAddUser"
+>
+  Add User
+</button>
+<div class="userTableContainer table-responsive-lg">
+  <table
+    id="userTable"
+    class="table table-bordered table-success table-hover table-responsive"
+  >
+    <thead>
+      <tr>
+        <th>Count</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Registerd Vehicles</th>
+      </tr>
+    </thead>
 
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+    <tbody>
+      <tr *ngFor="let user of users; index as i">
+        <td class="table-danger">{{ i + 1 }}</td>
+        <td class="table-primary">{{ user.id }}</td>
+        <td class="table-primary">{{ user.name }}</td>
+        <td class="table-primary">{{ user.contact }}</td>
+        <td class="table-primary">{{ user.email }}</td>
+        <td class="table-primary">{{ user.vehicleEntities.length }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

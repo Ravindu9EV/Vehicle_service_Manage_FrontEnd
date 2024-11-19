@@ -78,11 +78,11 @@ export class BookingComponent {
     '08:00am-09:00am',
     '09:00am-10:00am',
     '10:15am-11:15am',
-    '11:15am-12:15am',
-    '13:00am-14:00pm',
-    '14:00am-15:00pm',
-    '15:20am-16:20pm',
-    '16:20am-17:20pm',
+    '11:15am-12:15pm',
+    '13:00pm-14:00pm',
+    '14:00pm-15:00pm',
+    '15:20pm-16:20pm',
+    '16:20pm-17:20pm',
   ];
   public today: string =
     this.date.getFullYear().toString() +
@@ -247,13 +247,15 @@ export class BookingComponent {
     availableTime: string
   ) {
     this.buttonColor = [];
-    this.params = new HttpParams()
-      .set('bookedDate', this.formatDate)
-      .set('bookedTime', this.choosedTime);
+    // this.params = new HttpParams()
+    //   .set('bookedDate', this.formatDate)
+    //   .set('bookedTime', this.choosedTime);
+    // this.http
+    //   .get(`http://localhost:8080/booking/get-available-booking/filter?bookedDate=${this.formatDate}&bookedTime=${this.choosedTime}`, {
+    //     params: this.params,
+    //   })
     this.http
-      .get('http://localhost:8080/booking/get-available-booking', {
-        params: this.params,
-      })
+      .get(`http://localhost:8080/booking/get-available-booking/filter?bookedDate=${this.formatDate}&bookedTime=${this.choosedTime}`)
       .subscribe((data) => {
         console.log(data);
         if (data == null) {

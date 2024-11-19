@@ -1,16 +1,37 @@
 .topLev{
-    position: fixed;
-    margin-top: -50px;
-    margin-bottom: 50px;
-    z-index: 1;
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 10px;
+   width: 70vw;
+   background-color: rgba(164, 90, 234, 0.734);
+   padding: 10px 25px;
+   color: #160818;
 }
 h1{
+    position: absolute;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    color: #160818;
+    width: 70vw;
+}
+.userTableContainer{
+    margin-top: 50px;
+    width: 72vw;
+    height: 430px;
+    overflow: scroll;
+}
+.userrTable{
+    width:70vw;
     
-    margin-bottom: 80px;
-    z-index: -10;
 }
 
-.repairTable{
-    width:70vw;
-    z-index: -10;
+.btnAddUser{
+    background-color: #160818;
+    color: #9846EE;
+    margin-left: 65vw;
+}
+
+.btnAddUser:hover{
+    color: #160818;
+    background-color: #9846EE;
 }

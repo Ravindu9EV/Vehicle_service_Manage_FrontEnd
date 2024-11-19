@@ -136,33 +136,6 @@ export class UserRegistrationComponent {
     return false;
   }
 
-  //----------Save new Vehicle-----------------
-
-  saveVehicle(): boolean {
-    //this.newVehicle.userId=this.newUser.id;
-    console.log(this.newVehicle.userId);
-
-    console.log('inside vehicle');
-
-    this.http
-      .post<boolean>('http://localhost:8080/vehicle/save', this.newVehicle)
-      .subscribe((data) => {
-        console.log(data + 'vehi saved');
-        return data;
-        // if (data) {
-        //   Swal.fire({
-        //     position: 'top-end',
-        //     icon: 'success',
-        //     title: 'Reservation Successfull',
-        //     showConfirmButton: false,
-        //     timer: 1500,
-        //   });
-        // } else {
-        //   alert('Something missing!');
-        // }
-      });
-    return false;
-  }
 
   //--------------Get User details------------------
   getAllUsers() {

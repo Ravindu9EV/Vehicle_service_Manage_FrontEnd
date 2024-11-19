@@ -153,7 +153,6 @@ export class BookingManageComponent {
       )
       .subscribe((data) => {
         if (data == null) {
-          
           this.selectTime = time;
           this.selectedBooking.bookedTime = this.selectTime;
         } else {
@@ -165,6 +164,29 @@ export class BookingManageComponent {
           });
         }
       });
+  }
+  //--------------------------search Booking by ID-------------------
+  public searchBookingId: any = '';
+  searchBooking(id: string) {
+    if (id.match('')) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Search Field is Empty... Please Insert a Booking Id',
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
+      return;
+    } else {
+      this.http
+        .get<Booking>(
+          `http://localhost:8080/booking/search-booking-by-id/filter?id=${id}`
+        )
+        .subscribe((data) => {
+          if (data != null) {
+            this.selectedBooking = data;
+          }
+        });
+    }
   }
 
   //-------------------------update Date----------------------------------
@@ -202,8 +224,6 @@ export class BookingManageComponent {
         }
       });
   }
-
-  
 
   //------------------------confirm update-----------------------------
   update() {

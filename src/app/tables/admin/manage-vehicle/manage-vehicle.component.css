@@ -1,10 +1,15 @@
 .topLev{
-    position: fixed;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    /* z-index: 1; */
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 70vw;
+
+    background-color: rgba(164, 90, 234, 0.734);
+    padding: 10px 25px;
+    color: #160818;
 }
 h1{
+    
     margin-top: 10px;
     margin-bottom: 20px;
     /* z-index: -10; */
@@ -16,8 +21,22 @@ h1{
 }
 
 .vehicleTableContainer{
-    margin-top: 120px;
+    position: relative;
+    margin-top: 60px;
     width: 70vw;
-    height: 550px;
+    height: 450px;
     overflow: scroll;
+}
+
+.btnAddVehicle{
+    margin-left: 60vw;
+    background-color: #160818;
+    color: blueviolet;
+    
+}
+
+.btnAddVehicle:hover{
+    color: #160818;
+    background-color: blueviolet;
+    
 }

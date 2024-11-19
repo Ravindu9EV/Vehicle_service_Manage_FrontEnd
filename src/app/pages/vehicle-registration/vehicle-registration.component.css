@@ -1,11 +1,29 @@
 .searchBar{
-    width: 400px;
+    width: 300px;
      margin-bottom: 25px;
     
     display: grid;
     grid-template-columns: repeat(2,1fr);
     justify-content: center;
     align-items: center;
+}
+#userIdInput{
+    border: none;
+    border-radius: 5px;
+    height: 34px;
+}
+
+.btnSearch{
+    width: 40px;
+    color: #9846EE;
+    background-color: #160818;
+    margin-left: 10px;
+}
+.btnSearch:hover{
+    background-color: #9846EE;
+    color: #160818;
+    
+    
 }
 .vehicleFormContainer{
    display: flex;

@@ -1,18 +1,170 @@
+<h1 class="h1 bg-gradient">Booking Manage</h1>
 <div class="topLev">
   <app-admin-nav></app-admin-nav>
 </div>
 
-<h1 class="h1 bg-gradient">Booking Manage</h1>
-<table class="repairTable table table-bordered table-success">
-  <tr>
-    <th>Id</th>
-    <th>Time Slot</th>
-    <th>Action</th>
-  </tr>
+<button type="button" class="btn btn-light btnAddBooking" routerLink="/booking">
+  Add Booking
+</button>
+<div class="bookingTableContainer">
+  <table
+    class="table bookingTable table-bordered table-success m-4 table-hover"
+  >
+    <thead class="">
+      <tr>
+        <th style="width: 100px">Count</th>
+        <th style="width: 100px">Id</th>
+        <th style="width: 150px">Vehicle Id</th>
+        <th>Booked Date</th>
+        <th>Booked Time</th>
+        <th>Repair Id</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+    <tbody class="table-striped table-hover">
+      <tr class="table-danger" *ngFor="let booking of bookings; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ booking.id }}</td>
+        <td>{{ booking.vehicleId }}</td>
+        <td>{{ booking.bookedDate }}</td>
+        <td>{{ booking.bookedTime }}</td>
+        <td>{{ booking.repairId }}</td>
+        <td>
+          <button
+            class="btn m-2 btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="updateBooking(booking)"
+          >
+            <i class="bi bi-pen"></i>
+          </button>
+          <button class="btn btn-danger" (click)="deleteBooking(booking.id)">
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Booking</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="bookingId" class="col-form-label">Booking Id:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="selectedBooking.id"
+            id="bookingId"
+            disabled
+          />
+        </div>
+        <div class="mb-3">
+          <label for="bookingVehicleId" class="col-form-label"
+            >Vehicle Id:</label
+          >
+          <input
+            type="text"
+            [(ngModel)]="selectedBooking.vehicleId"
+            class="form-control"
+            id="bookingVehicleId"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="bookingDate" class="col-form-label">Booking Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="bookingDate"
+            [min]="minDate"
+            [max]="maxDate"
+            [(ngModel)]="selectedBooking.bookedDate"
+            (click)="updateDate()"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="bookingTime" class="col-form-label">Booking Time:</label>
+          <button
+            type="button"
+            class="btn btn-info dropdown-toggle m-4"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="font-size: 13px"
+          >
+            {{ selectTime }}
+          </button>
+          <ul class="dropdown-menu">
+            <li id="bookingItem" *ngFor="let time of availableTimeSlots">
+              <a class="dropdown-item" (click)="setSelectedTime(time)">{{
+                time
+              }}</a>
+            </li>
+          </ul>
+          <!-- <input type="text" class="form-control" id="bookingTime" /> -->
+        </div>
+        <div class="col-auto insideRows">
+          <label for="bookedType" class="form-label">Repair Type</label>
+          <!-- <input type=""class="form-control" name="" id="bookedType"> -->
+          <!-- <div class="btn-group"> -->
+          <button
+            type="button"
+            class="btn btn-success dropdown-toggle m-4"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="font-size: 13px"
+          >
+            {{ dropDownDisplay }}
+          </button>
+          <ul class="dropdown-menu">
+            <li id="serviceItem" *ngFor="let repair of availableRepairTypes">
+              <a class="dropdown-item" (click)="setSelectedType(repair)">{{
+                repair
+              }}</a>
+            </li>
+          </ul>
+          <!-- </div> -->
+        </div>
+        <div class="mb-3">
+          <label for="message-text" class="col-form-label">Description:</label>
+          <textarea
+            class="form-control"
+            id="message-text"
+            [(ngModel)]="selectedBooking.description"
+            >{{ selectedBooking.description }}</textarea
+          >
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="update()"
+          data-bs-dismiss="modal"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

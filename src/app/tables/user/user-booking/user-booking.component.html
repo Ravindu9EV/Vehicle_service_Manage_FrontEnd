@@ -6,13 +6,22 @@
       <tr>
         <th style="width: 100px">Count</th>
         <th style="width: 100px">Id</th>
-        <th style="width: 150px">Type</th>
+        <th style="width: 150px">Repair Id</th>
         <th>Booked Date</th>
         <th>Booked Time</th>
         <th>Status</th>
       </tr>
     </thead>
 
-    <tbody table-striped table-hover></tbody>
+    <tbody class="table-striped table-hover">
+      <tr *ngFor="let book of bookings; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ book.id }}</td>
+        <td>{{ book.vehicleId }}</td>
+        <td>{{ book.bookedDate }}</td>
+        <td>{{ book.bookedTime }}</td>
+        <td>{{ book.repairId }}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

@@ -1,4 +1,5 @@
 export class Booking {
+  public id: number;
   public vehicleId: number;
   public bookedDate: string;
   public bookedTime: string;
@@ -6,12 +7,14 @@ export class Booking {
   public description: string;
 
   constructor(
+    id: number,
     vehicleId: number,
     bookeDate: string,
     bookedTime: string,
     repairId: number,
     description: string
   ) {
+    this.id = id;
     this.vehicleId = vehicleId;
     this.bookedDate = bookeDate;
     this.bookedTime = bookedTime;
@@ -19,6 +22,9 @@ export class Booking {
     this.description = description;
   }
 
+  public getId() {
+    return this.id;
+  }
   public getVehicleId() {
     return this.vehicleId;
   }

@@ -1,38 +1,38 @@
+<h1 class="h1 bg-gradient" (click)="loadVehicles()">Vehicle Manage</h1>
 <div class="topLev">
   <app-admin-nav></app-admin-nav>
 </div>
+<div class="vehicleTableContainer">
+  <table
+    class="table table-dark table-bordered table-successtable table-striped table-hover"
+  >
+    <thead>
+      <tr>
+        <th>Count</th>
+        <th>Id</th>
+        <th>User Id</th>
+        <th>Vehicle Model</th>
+        <th>License Plate</th>
+        <th>Made Year</th>
+      </tr>
+    </thead>
 
-<h1 class="h1 bg-gradient" (click)="loadVehicles()">Vehicle Manage</h1>
-
-<table
-  class="table table-dark table-bordered table-successtable table-striped table-hover"
->
-  <thead>
-    <tr>
-      <th>Count</th>
-      <th>Id</th>
-      <th>User Id</th>
-      <th>Vehicle Model</th>
-      <th>License Plate</th>
-      <th>Made Year</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let vehicle of vehicleList; index as i">
-      <td class="table-danger">{{ i + 1 }}</td>
-      <td class="table-success">{{ vehicle.userId }}</td>
-      <td class="table-info">{{ vehicle.userId }}</td>
-      <td>{{ vehicle.model }}</td>
-      <td>{{ vehicle.licensePlate }}</td>
-      <td>{{ vehicle.madeYear }}</td>
-      <td>
-        <button class="btn btn-success"><i class="bi bi-pen-fill"></i></button>
+    <tbody>
+      <tr *ngFor="let vehicle of vehicleList; index as i">
+        <td class="table-danger">{{ i + 1 }}</td>
+        <td class="table-success">{{ vehicle.userId }}</td>
+        <td class="table-info">{{ vehicle.userId }}</td>
+        <td>{{ vehicle.model }}</td>
+        <td>{{ vehicle.licensePlate }}</td>
+        <td>{{ vehicle.madeYear }}</td>
+        <td>
+          <!-- <button class="btn btn-success"><i class="bi bi-pen-fill"></i></button>
         <button class="btn btn-danger" (click)="deleteVehicle(i)">
-          <!-- <i class="bi bi-trash-fill"></i> -->
-          <i class="bi bi-layout-text-sidebar"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          <i class="bi bi-trash-fill"></i> -->
+          <!-- <i class="bi bi-layout-text-sidebar"></i> -->
+          <!-- </button> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

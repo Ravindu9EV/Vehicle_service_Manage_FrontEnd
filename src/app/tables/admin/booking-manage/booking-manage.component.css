@@ -1,16 +1,39 @@
 .topLev{
-    position: fixed;
-    margin-top: -200px;
-    margin-bottom: 50px;
-    z-index: 1;
+    width: 65vw;
+    padding: 8px 15px;
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    background-color: rgba(137, 43, 226, 0.603);
 }
 h1{
-    
-    margin-bottom: 80px;
-    z-index: -10;
+    position: absolute;
+    margin-top: -40px;
+    margin-bottom:80px;
+   
 }
 
-.repairTable{
+.bookingTableContainer{
+    position: relative;
+    margin-top: 50px;
     width:70vw;
-    z-index: -10;
+    height: 400px;
+    overflow: scroll;
+   
+}
+
+.bookingTable{
+    width: 65vw;
+    
+}
+
+.btnAddBooking{
+    margin-left: 60vw;
+    background-color: #160818;
+    color:  #9846EE;
+}
+
+.btnAddBooking:hover{
+    color: #160818;
+    background-color:  #9846EE;
 }

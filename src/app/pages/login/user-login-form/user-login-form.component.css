@@ -1,3 +1,7 @@
+.mainContainer{
+    height: 100%;
+}
+
 .userLoginForm{
     display: flex;
     flex-direction: column;
@@ -32,7 +36,7 @@ input{
 
 .loginFormPosition{
     display: block;
-    margin-top: 100px;
+    margin-top: 10px;
     align-items: center;
     justify-content: center;
 }
@@ -45,8 +49,19 @@ input{
 .vehicleDetailContainer{
     width: 300px;
     height: 250px;
+    margin-top: 10px;
 }
 
-.leftSide{
+/* .leftSide{
     height: 60vh;
+} */
+
+.vDetail{
+    padding: 10px;
+    background-color: #9782af;
 }
+
+.flContainer{
+    height: 50vh;
+}
+

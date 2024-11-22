@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserAccountComponent } from '../../user/user-account/user-account.component';
 import { AdminDashboardComponent } from '../../dashboard/admin-dashboard/admin-dashboard.component';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 import { ForgotPasswordComponent } from '../../../common/forgot-password/forgot-password.component';
 
 @Component({
@@ -80,12 +81,6 @@ export class UserLoginFormComponent {
       });
   }
 
-  clearTextFields() {
-    this.currentUser = {};
-    this.userEmail = '';
-    this.currentUser.vehicleEntities = [];
-  }
-
   //-------------------Verify User------------------------
   searchUser() {
     this.http
@@ -106,6 +101,56 @@ export class UserLoginFormComponent {
   forgotPassword() {
     this.router.navigate(['/forgot-password']);
   }
+
+  public selectedUser: any = {
+    userId: '',
+    name: '',
+    contact: '',
+    email: '',
+    password: '',
+    vehicleEntities: [this.updateVehicle],
+  };
+
+  //-----------assign update User----------------
+  updateUserSelection(user: any) {
+    this.selectedUser = user;
+  }
+
+  //---------------Confirm and Update User-------------
+  updateUser() {
+    this.http
+      .put('http://localhost:8080/user/update', this.selectedUser)
+      .subscribe((data) => {
+        if (data) {
+          console.log(data);
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Every Filed must bu filled!',
+            footer: '<a href="#">Why do I have this issue?</a>',
+          });
+        }
+      });
+  }
+
+  // -------Clear Text Fields--------------
+  clearTextFields() {
+    this.currentUser = {};
+    this.selectedUser = {};
+    this.userEmail = '';
+    this.currentUser.vehicleEntities = [];
+  }
+
+  // -------Log Out--------------------
 
   logOut() {
     this.isLogged = false;

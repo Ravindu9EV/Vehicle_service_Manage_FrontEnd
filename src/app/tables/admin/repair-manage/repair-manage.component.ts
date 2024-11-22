@@ -8,6 +8,9 @@ import { elementAt } from 'rxjs';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import { Repair } from '../../../model/Repair';
+
+
+
 @Component({
   selector: 'app-repair-manage',
   standalone: true,

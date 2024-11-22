@@ -1,13 +1,14 @@
 /*-------------------------- style buttons-------------- */
 .top-lev{
-    margin-top: 0;
+    margin-top: 0px;
     display: flex;
     flex-direction: row;
     margin-left: 820px;
     
 }
 
-.top-lev a button{
+.top-lev button{
+    margin-top: 100px;
     width: 100px;
     border-radius: 10px;
     text-align: center;

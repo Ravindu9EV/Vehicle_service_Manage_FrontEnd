@@ -1,83 +1,65 @@
-<div id="maincontainer"></div>
-
-<div id="loginForm " *ngIf="!isLogged" class="userLoginForm">
-  <img
-    class="mb-4"
-    src="/docs/5.3/assets/brand/bootstrap-logo.svg"
-    alt=""
-    width="72"
-    height="57"
-  />
-  <h1 class="h3 mb-3 fw-normal">Please Log in</h1>
-
-  <div class="form-floating">
-    <input
-      type="email"
-      class="form-control"
-      id="userEmail"
-      placeholder="name@example.com"
-      [(ngModel)]="login.email"
+<div id="maincontainer">
+  <div id="loginForm " *ngIf="!isLogged" class="userLoginForm">
+    <img
+      class="mb-4"
+      src="/docs/5.3/assets/brand/bootstrap-logo.svg"
+      alt=""
+      width="72"
+      height="57"
     />
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div class="form-floating">
-    <input
-      type="password"
-      class="form-control"
-      id="userPassword"
-      placeholder="Password "
-      [(ngModel)]="login.password"
-    />
-    <label for="floatingPassword">Password</label>
-  </div>
+    <h1 class="h3 mb-3 fw-normal">Please Log in</h1>
 
-  <!-- <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Remember me
-      </label>
-    </div> -->
-  <button
-    class="btn btn-light btnLogin w-100 py-2"
-    type="submit"
-    data-bs-dismiss="modal"
-    data-toggle="modal"
-    data-target="#exampleModal"
-    (click)="checkLogin()"
-  >
-    Log In
-  </button>
-  <a
-    type="button"
-    class="link-offset-1-hover m-4"
-    data-toggle="modal"
-    data-target="#exampleModal"
-    routerLink="/forgot-password"
-    >Forgot Password?</a
-  >
-</div>
-
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
-
-<div class="container-fluid pb-3">
-  <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
-    <div class="bg-body-tertiary border rounded-3">
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        id="userEmail"
+        placeholder="name@example.com"
+        [(ngModel)]="login.email"
+      />
+      <label for="floatingInput">Email address</label>
     </div>
-    <div class="bg-body-tertiary border rounded-3">
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="userPassword"
+        placeholder="Password "
+        [(ngModel)]="login.password"
+      />
+      <label for="floatingPassword">Password</label>
     </div>
-  </div>
-</div>
 
-<div
-  *ngIf="isLogged"
-  class="loginFormPosition"
-  id="exampleModal"
-  aria-hidden="false"
->
-  <!-- navbar-expand-lg navbar-dark bg-dark bg-light -->
-  <div class="navBar">
+    <!-- <div class="form-check text-start my-3">
+        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Remember me
+        </label>
+      </div> -->
+    <button
+      class="btn btn-light btnLogin w-100 py-2"
+      type="submit"
+      data-bs-dismiss="modal"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      (click)="checkLogin()"
+    >
+      Log In
+    </button>
+    <a
+      type="button"
+      class="link-offset-1-hover m-4"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      routerLink="/forgot-password"
+      >Forgot Password?</a
+    >
+  </div>
+
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+
+  <!-- ----Nav Bar------ -->
+  <div *ngIf="isLogged" class="navBar">
     <header class="p-3 mb-3 border-bottom bg-dark">
       <div class="container">
         <div
@@ -149,7 +131,9 @@
               />
             </a>
             <ul class="dropdown-menu text-small">
-              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li>
+                <a class="dropdown-item" href="#">New project...</a>
+              </li>
               <li>
                 <a class="dropdown-item" routerLink="/updateDetails"
                   >Edit rofile</a
@@ -157,128 +141,286 @@
               </li>
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+              <li>
+                <a class="dropdown-item" (click)="logOut()">Sign out</a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </header>
   </div>
-  <img src="" alt="" />
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="userName">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="userName"
-        [(ngModel)]="currentUser.name"
-        placeholder="John Doe"
-      />
-    </div>
-    <div class="form-group col-md-6">
-      <label for="userContact">Contact</label>
-      <input
-        type="tel"
-        class="form-control"
-        id="userContact"
-        [(ngModel)]="currentUser.contact"
-        placeholder="+94_____"
-      />
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        id="inputEmail4"
-        [(ngModel)]="currentUser.email"
-        placeholder="Email"
-      />
+  <!-- ---------------- -->
+  <div *ngIf="isLogged" class="flContainer container-fluid pb-3">
+    <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
+      <div style="overflow: scroll" class="bg-body-tertiary border rounded-3">
+        <div *ngIf="isLogged" class="vehicleDetailContainer">
+          <div
+            class="vDetail m-2"
+            *ngFor="let vehicle of currentUser.vehicleEntities"
+          >
+            <div class="form-group col-md-6">
+              <label for="userName">Model</label>
+              <input
+                type="text"
+                class="form-control"
+                id="userName"
+                [(ngModel)]="vehicle.model"
+                placeholder="John Doe"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="userName">License Plate</label>
+              <input
+                type="text"
+                class="form-control"
+                id="userName"
+                [(ngModel)]="vehicle.licensePlate"
+                placeholder="John Doe"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="userName">Made Year</label>
+              <input
+                type="text"
+                class="form-control"
+                id="userName"
+                [(ngModel)]="vehicle.madeYear"
+                placeholder="John Doe"
+              />
+            </div>
+          </div>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      </div>
+      <div
+        class="bg-body bg-success-subtle border rounded-3"
+        style="height: 60vh"
+      >
+        <div
+          *ngIf="isLogged"
+          class="loginFormPosition"
+          id="exampleModal"
+          aria-hidden="false"
+        >
+          <!-- navbar-expand-lg navbar-dark bg-dark bg-light -->
+
+          <img src="" alt="" />
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="userName">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="userName"
+                [(ngModel)]="currentUser.name"
+                placeholder="John Doe"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="userContact">Contact</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="userContact"
+                [(ngModel)]="currentUser.contact"
+                placeholder="+94_____"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail4"
+                [(ngModel)]="currentUser.email"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">Number Of Vehicles</label>
+              <input
+                type="text"
+                [(ngModel)]="currentUser.vehicleEntities.length"
+                class="form-control"
+                id="inputCity"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal3"
+            class="btn btn-primary"
+            (click)="updateUserSelection(currentUser)"
+          >
+            Edit Details
+          </button>
+        </div>
+
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      </div>
     </div>
   </div>
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Number Of Vehicles</label>
-      <input
-        type="text"
-        [(ngModel)]="currentUser.vehicleEntities.length"
-        class="form-control"
-        id="inputCity"
-      />
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary" (click)="logOut()">
-    Log Out
-  </button>
 </div>
 
-<div *ngIf="isLogged" class="vehicleDetailContainer">
-  <div id="carouselExampleDark" class="carousel carousel-dark slide">
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselExampleDark"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleDark"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleDark"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
-    <div class="carousel-inner">
-      <div
-        class="carousel-item active"
-        *ngFor="let vehicle of currentUser.vehicleEntities"
-        data-bs-interval="10000"
-      >
-        <img src=" vehicle.img " class="d-block w-100" alt="..." />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>{{ vehicle.model }}</h5>
-          <div class="form-group col-md-6">
-            <label for="userContact">Made Year</label>
-            <input
-              type="tel"
-              class="form-control"
-              id="userContact"
-              [(ngModel)]="vehicle.madeYear"
-              placeholder="NISSAN"
-            />
+<!-- ---------Update User Details------------- -->
+<!-- <div class="userDetailContainer"> -->
+<!-- <div
+  class="modal modal-dialog modal-fullscreen-sm-down"
+  id="exampleModalToggle3"
+  aria-hidden="true"
+></div> -->
+
+<div
+  class="modal modal-fullscreen fade updateModal modal-lg"
+  id="exampleModal3"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 d-flex text-center" id="exampleModalLabel">
+          Edit Details
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body modal-lg">
+        <div *ngIf="isLogged" class="flContainer container-fluid pb-3">
+          <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
+            <div
+              style="overflow: scroll"
+              class="bg-body-tertiary border rounded-3"
+            >
+              <div *ngIf="isLogged" class="vehicleDetailContainer">
+                <div
+                  class="vDetail m-2"
+                  *ngFor="let selVehicle of selectedUser.vehicleEntities"
+                >
+                  <div class="form-group col-md-6">
+                    <label for="userName">Model</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="userName"
+                      [(ngModel)]="selVehicle.model"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="userName">License Plate</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="userName"
+                      [(ngModel)]="selVehicle.licensePlate"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="userName">Made Year</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="userName"
+                      [(ngModel)]="selVehicle.madeYear"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                </div>
+              </div>
+              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+            <div
+              class="bg-body bg-success-subtle border rounded-3 p-5"
+              style="height: 60vh"
+            >
+              <div
+                *ngIf="isLogged"
+                class="loginFormPosition"
+                id="exampleModal"
+                aria-hidden="false"
+              >
+                <!-- navbar-expand-lg navbar-dark bg-dark bg-light -->
+
+                <img src="" alt="" />
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="userName">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="userName"
+                      [(ngModel)]="selectedUser.name"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="userContact">Contact</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="userContact"
+                      [(ngModel)]="selectedUser.contact"
+                      placeholder="+94_____"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="inputEmail4"
+                      [(ngModel)]="selectedUser.email"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">Number Of Vehicles</label>
+                    <input
+                      type="text"
+                      [(ngModel)]="selectedUser.vehicleEntities.length"
+                      class="form-control"
+                      id="inputCity"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
           </div>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="updateUser()"
+          data-bs-dismiss="modal"
+        >
+          Update
+        </button>
+      </div>
     </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleDark"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleDark"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 </div>
-<div class="userDetailContainer"></div>
+<!-- </div> -->

@@ -17,11 +17,19 @@
 
 <div class="card-row row">
   <div class="completedRepairsCard">
-    <h5 style="color: #37163b; margin-top: 10px">Completed services</h5>
-    <p id="fCount">20344</p>
+    <h5 style="color: #ba84f4; margin-top: 10px" class="fw-bold">
+      Registered Customers
+    </h5>
+    <p id="fCount" class="badge text-bg-primary text-wrap">
+      {{ registeredCustomers }}
+    </p>
   </div>
   <div class="ongoingRepairsCard">
-    <h5 style="color: #37163b; margin-top: 10px">Ongoing services</h5>
-    <p id="oCount">20344</p>
+    <h5 style="color: #ba84f4; margin-top: 10px" class="fw-bold">
+      Overall Bookings
+    </h5>
+    <p id="oCount" class="badge text-bg-success text-wrap">
+      {{ bookingCount }}
+    </p>
   </div>
 </div>

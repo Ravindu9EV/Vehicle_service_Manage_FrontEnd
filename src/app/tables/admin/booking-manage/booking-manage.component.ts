@@ -10,6 +10,8 @@ import { RouterLink } from '@angular/router';
 import { Repair } from '../../../model/Repair';
 import { D } from '@angular/cdk/keycodes';
 
+
+
 @Component({
   selector: 'app-booking-manage',
   standalone: true,
@@ -168,7 +170,7 @@ export class BookingManageComponent {
   //--------------------------search Booking by ID-------------------
   public searchBookingId: any = '';
   searchBooking(id: string) {
-    if (id.match('')) {
+    if (id === '') {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -184,6 +186,8 @@ export class BookingManageComponent {
         .subscribe((data) => {
           if (data != null) {
             this.selectedBooking = data;
+            this.setTypeWhenLoading();
+            this.selectTime = data.bookedTime;
           }
         });
     }
@@ -255,4 +259,16 @@ export class BookingManageComponent {
   // setBookingTime(time: any) {
   //   this.selectTime = time;
   // }
+
+  //-------------clear text---------------
+
+  clearTxt() {
+    this.searchBookingId = '';
+    this.selectedBooking.id = 0;
+    this.selectedBooking.vehicleId = 0;
+    this.selectedBooking.bookedDate = '';
+    this.selectedBooking.bookedTime = '';
+    this.selectedBooking.repairId = 0;
+    this.selectedBooking.description = '';
+  }
 }

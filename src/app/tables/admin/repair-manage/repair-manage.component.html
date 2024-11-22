@@ -2,6 +2,23 @@
 <div class="topLev">
   <app-admin-nav></app-admin-nav>
 </div>
+
+<div class="col searchCol">
+  <input
+    type="search"
+    [(ngModel)]="searchRepairId"
+    placeholder="Booking ID"
+    (click)="clearTxt()"
+  />
+  <button
+    class="btn btn-light m-2"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+    (click)="searchRepair(searchRepairId)"
+  >
+    <i class="bi bi-search"></i>
+  </button>
+</div>
 <button
   type="button"
   class="btn btn-success btn-outline-info"
@@ -165,7 +182,7 @@
 
   <!-- Modal -->
   <div
-    class="modal fade"
+    class="modal fade up"
     id="staticBackdrop"
     data-bs-backdrop="static"
     data-bs-keyboard="false"

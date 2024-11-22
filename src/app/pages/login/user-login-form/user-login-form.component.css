@@ -1,0 +1,52 @@
+.userLoginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 430px;
+    text-align: center;
+    margin-left: 350px;
+}
+
+#userEmail,#userPassword{
+    width: 330px;
+    
+}
+input{
+    margin: 15px 10px;
+    
+}
+
+.btnLogin{
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #9846EE;
+    background-color: #160818;
+}
+
+.btnLogin:hover{
+    background-color: #9846EE;
+    color: #160818;
+}
+
+.loginFormPosition{
+    display: block;
+    margin-top: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hideForm{
+    display: none;
+
+}
+
+.vehicleDetailContainer{
+    width: 300px;
+    height: 250px;
+}
+
+.leftSide{
+    height: 60vh;
+}

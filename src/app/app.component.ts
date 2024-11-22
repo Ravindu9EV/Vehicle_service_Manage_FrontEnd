@@ -13,6 +13,7 @@ import { AdminNavComponent } from './pages/common/admin-nav/admin-nav.component'
 import { UserBookingComponent } from './tables/user/user-booking/user-booking.component';
 import { UserRepairsComponent } from './tables/user/user-repairs/user-repairs.component';
 import { UpdateDetailsComponent } from './pages/user/update-details/update-details.component';
+import { ForgotPasswordComponent } from './common/forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,7 @@ import { UpdateDetailsComponent } from './pages/user/update-details/update-detai
     UserBookingComponent,
     UserRepairsComponent,
     UpdateDetailsComponent,
+    ForgotPasswordComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

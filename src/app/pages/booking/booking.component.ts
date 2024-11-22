@@ -43,7 +43,7 @@ export class BookingComponent {
   crntMonth: number = this.crntDate.getUTCMonth() + 1;
   crntDay: number = this.crntDate.getDay();
   public minDate: string =
-    this.crntYear + '-' + this.crntMonth + '-' + (this.crntDay + 10); //"2024-11-10";
+    this.crntYear + '-' + this.crntMonth + '-' + (this.crntDay + 17); //"2024-11-10";
   crntDayM: number = this.crntDay;
   public maxDate: string = this.crntYear + '-12-30';
 
@@ -255,7 +255,9 @@ export class BookingComponent {
     //     params: this.params,
     //   })
     this.http
-      .get(`http://localhost:8080/booking/get-available-booking/filter?bookedDate=${this.formatDate}&bookedTime=${this.choosedTime}`)
+      .get(
+        `http://localhost:8080/booking/get-available-booking/filter?bookedDate=${this.formatDate}&bookedTime=${this.choosedTime}`
+      )
       .subscribe((data) => {
         console.log(data);
         if (data == null) {

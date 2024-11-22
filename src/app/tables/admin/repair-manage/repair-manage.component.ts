@@ -7,6 +7,7 @@ import { AdminNavComponent } from '../../../pages/common/admin-nav/admin-nav.com
 import { elementAt } from 'rxjs';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
+import { Repair } from '../../../model/Repair';
 @Component({
   selector: 'app-repair-manage',
   standalone: true,
@@ -92,6 +93,7 @@ export class RepairManageComponent {
             .delete(`http://localhost:8080/repair/delete-by-id/${id}`)
             .subscribe((data) => {
               if (data) {
+                this.loadRepairTable();
                 swalWithBootstrapButtons.fire({
                   title: 'Deleted!',
                   text: 'Your file has been deleted.',
@@ -126,23 +128,47 @@ export class RepairManageComponent {
     console.log(this.updateRepairDetails);
   }
 
+  //----------------search Repair----------------
+  public searchRepairId: any = '';
+
+  searchRepair(id: any) {
+    this.http
+      .get<Repair>(
+        `http://localhost:8080/repair/search-by-id/${Number.parseInt(
+          id.toString()
+        )}`
+      )
+      .subscribe((data) => {
+        if (data != null) {
+          console.log(data);
+          this.updateRepairDetails = data;
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Every Filed must bu filled!',
+            footer: '<a href="#">Why do I have this issue?</a>',
+          });
+          this.clearTxt();
+        }
+      });
+  }
+
   updateR() {
     this.http
       .put('http://localhost:8080/repair/update', this.updateRepairDetails)
       .subscribe((data) => {
-        if (
-          this.updateRepairDetails.type.equals('') |
-          this.updateRepairDetails.cost.equals('') |
-          this.updateRepairDetails.duration.equals('') |
-          this.updateRepairDetails.description.equals('')
-        ) {
-          alert('All Fields Should be filled!');
-        } else if (data) {
-          alert('Successfully Added!');
+        if (data) {
+          Swal.fire({
+            title: 'Successfully Updated!',
+            text: 'You clicked the button!',
+            icon: 'success',
+          });
           this.loadRepairTable();
           this.clearTxt();
         } else {
           alert('Invalid Details!!!');
+          this.loadRepairTable();
           this.clearTxt();
         }
       });
@@ -150,6 +176,7 @@ export class RepairManageComponent {
 
   //------------------clear Txt-----------
   clearTxt() {
+    this.searchRepairId = '';
     this.newRepair = {
       id: null,
       type: '',

@@ -17,6 +17,7 @@ import { ManageVehicleComponent } from './tables/admin/manage-vehicle/manage-veh
 import { UserBookingComponent } from './tables/user/user-booking/user-booking.component';
 import { UserRepairsComponent } from './tables/user/user-repairs/user-repairs.component';
 import { UpdateDetailsComponent } from './pages/user/update-details/update-details.component';
+import { ForgotPasswordComponent } from './common/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   {
@@ -50,6 +51,20 @@ export const routes: Routes = [
   {
     path: 'user-login',
     component: UserLoginFormComponent,
+    children: [
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent,
+      },
+      {
+        path: 'user-bookings',
+        component: UserBookingComponent,
+      },
+      {
+        path: 'user-repairs',
+        component: UserRepairsComponent,
+      },
+    ],
   },
   {
     path: 'admin-login',
@@ -96,5 +111,9 @@ export const routes: Routes = [
   {
     path: 'update-user-details',
     component: UpdateDetailsComponent,
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
   },
 ];

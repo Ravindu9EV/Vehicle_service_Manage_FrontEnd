@@ -1,4 +1,6 @@
-<div class="userLoginForm">
+<div id="maincontainer"></div>
+
+<div id="loginForm " *ngIf="!isLogged" class="userLoginForm">
   <img
     class="mb-4"
     src="/docs/5.3/assets/brand/bootstrap-logo.svg"
@@ -6,7 +8,7 @@
     width="72"
     height="57"
   />
-  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <h1 class="h3 mb-3 fw-normal">Please Log in</h1>
 
   <div class="form-floating">
     <input
@@ -36,11 +38,247 @@
       </label>
     </div> -->
   <button
-    class="btn btn-primary w-100 py-2"
+    class="btn btn-light btnLogin w-100 py-2"
     type="submit"
+    data-bs-dismiss="modal"
+    data-toggle="modal"
+    data-target="#exampleModal"
     (click)="checkLogin()"
   >
-    Sign in
+    Log In
   </button>
-  <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
+  <a
+    type="button"
+    class="link-offset-1-hover m-4"
+    data-toggle="modal"
+    data-target="#exampleModal"
+    routerLink="/forgot-password"
+    >Forgot Password?</a
+  >
 </div>
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+
+<div class="container-fluid pb-3">
+  <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr">
+    <div class="bg-body-tertiary border rounded-3">
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+    <div class="bg-body-tertiary border rounded-3">
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="isLogged"
+  class="loginFormPosition"
+  id="exampleModal"
+  aria-hidden="false"
+>
+  <!-- navbar-expand-lg navbar-dark bg-dark bg-light -->
+  <div class="navBar">
+    <header class="p-3 mb-3 border-bottom bg-dark">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <a
+            href="/"
+            class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none"
+          >
+            <svg
+              class="bi me-2"
+              width="40"
+              height="32"
+              role="img"
+              aria-label="Bootstrap"
+            >
+              <use xlink:href="#bootstrap" />
+            </svg>
+          </a>
+
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li>
+              <a href="#" class="nav-link px-2 link-secondary">Overview</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-2 link-body-emphasis"
+                >My Vehicles</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="user-bookings"
+                class="nav-link px-2 link-body-emphasis"
+                >Bookings</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/user-repairs"
+                class="nav-link px-2 link-body-emphasis"
+                >Repairs</a
+              >
+            </li>
+          </ul>
+          <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Search"
+            />
+          </div>
+
+          <div class="dropdown text-end">
+            <a
+              href="#"
+              class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="https://github.com/mdo.png"
+                alt="mdo"
+                width="32"
+                height="32"
+                class="rounded-circle"
+              />
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li>
+                <a class="dropdown-item" routerLink="/updateDetails"
+                  >Edit rofile</a
+                >
+              </li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <img src="" alt="" />
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="userName">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userName"
+        [(ngModel)]="currentUser.name"
+        placeholder="John Doe"
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="userContact">Contact</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="userContact"
+        [(ngModel)]="currentUser.contact"
+        placeholder="+94_____"
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail4"
+        [(ngModel)]="currentUser.email"
+        placeholder="Email"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Number Of Vehicles</label>
+      <input
+        type="text"
+        [(ngModel)]="currentUser.vehicleEntities.length"
+        class="form-control"
+        id="inputCity"
+      />
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="logOut()">
+    Log Out
+  </button>
+</div>
+
+<div *ngIf="isLogged" class="vehicleDetailContainer">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner">
+      <div
+        class="carousel-item active"
+        *ngFor="let vehicle of currentUser.vehicleEntities"
+        data-bs-interval="10000"
+      >
+        <img src=" vehicle.img " class="d-block w-100" alt="..." />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ vehicle.model }}</h5>
+          <div class="form-group col-md-6">
+            <label for="userContact">Made Year</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="userContact"
+              [(ngModel)]="vehicle.madeYear"
+              placeholder="NISSAN"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="userDetailContainer"></div>

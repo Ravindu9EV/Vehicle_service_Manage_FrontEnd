@@ -126,6 +126,7 @@
             class="form-control"
             name=""
             id="bookedDate"
+            
           />
         </div>
         <div class="col-auto insideRows">
@@ -163,7 +164,13 @@
         </div>
         <div class="col-auto insideRows">
           <label for="bookedDesc" class="form-label">Description</label>
-          <input type="text" class="form-control" name="" id="bookedDesc" />
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="bookedDesc"
+            [(ngModel)]="booking.description"
+          />
         </div>
         <button
           class="btn btn-light"
